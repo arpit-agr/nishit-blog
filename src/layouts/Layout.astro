@@ -1,13 +1,47 @@
+---
+import "../assets/css/style.css";
+
+interface Props {
+	title: string;
+	desc: string;
+}
+
+const { title = "Nishit Jalan", desc } = Astro.props;
+// TODO: check the canonical URL for markdown layouts
+// https://docs.astro.build/en/basics/layouts/#markdown-layouts
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL("/images/preview.png", Astro.url);
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>{title}</title>
+
+		<script type="module">
+			document.documentElement.classList.add("has-js");
+		</script>
+
+		<meta name="description" content={desc} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={desc} />
+		<meta property="og:image" content={socialImageURL} />
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<link rel="canonical" href={canonicalURL} />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- TODO: update theme color -->
+		<meta name="theme-color" content="#FF00FF" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Nishit's Blog</title>
 	</head>
 	<body>
-		<slot />
+		<slot>
+			<p>This is my fallback content, if there is no child passed into slot</p>
+		</slot>
 	</body>
 </html>
