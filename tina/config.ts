@@ -32,6 +32,17 @@ export default defineConfig({
 				name: "post",
 				label: "Posts",
 				path: "src/content/posts",
+				defaultItem: () => ({
+					pubDate: new Date().toISOString(),
+				}),
+				ui: {
+					filename: {
+						readonly: true, // the editor can not edit the filename
+						slugify: (values) => {
+							return values?.title?.toLowerCase().replace(/ /g, "-");
+						},
+					},
+				},
 				fields: [
 					{
 						type: "string",
@@ -55,5 +66,13 @@ export default defineConfig({
 				],
 			},
 		],
+	},
+	search: {
+		tina: {
+			indexerToken: process.env.TINASEARCH,
+			stopwordLanguages: ["eng"],
+		},
+		indexBatchSize: 50,
+		maxSearchIndexFieldLength: 100,
 	},
 });
