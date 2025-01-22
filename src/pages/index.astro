@@ -1,8 +1,28 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const postEntries = await getCollection("posts");
 ---
 
 <!-- TODO: update page desc -->
-<Layout title="Nishit Jalan" desc="TKTK">
-	<h1>Nishit Jalan</h1>
-</Layout>
+<BaseLayout title="Nishit Jalan" desc="TKTK">
+	<h1>Nishit's Blog</h1>
+	<h2>Latest posts</h2>
+	<ol>
+		{
+			postEntries.map((entry) => {
+				const entryDate = new Date(entry.data.pubDate);
+				return (
+					<li>
+						<h3>
+							<a href={`/posts/${entry.id}`}>{entry.data.title}</a>
+						</h3>
+						<FormattedDate pubDate={entryDate} />
+					</li>
+				);
+			})
+		}
+	</ol>
+</BaseLayout>

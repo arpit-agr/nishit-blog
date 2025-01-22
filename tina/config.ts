@@ -42,8 +42,8 @@ export default defineConfig({
 					},
 					{
 						type: "datetime",
-						name: "posted",
-						label: "Date Posted",
+						name: "pubDate",
+						label: "Date Published",
 						required: true,
 					},
 					{

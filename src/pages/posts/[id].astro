@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getCollection, render } from "astro:content";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+	const posts = await getCollection("posts");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { post } = Astro.props;
+const postDate = new Date(post.data.pubDate);
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} desc="TKTK">
+	<a href="/">← Back</a>
+	<h1>{post.data.title}</h1>
+	<FormattedDate pubDate={postDate} />
+	<Content />
+</BaseLayout>
