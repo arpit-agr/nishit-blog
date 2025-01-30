@@ -1,0 +1,59 @@
+@view-transition {
+	navigation: auto;
+}
+
+body {
+	background-color: var(--color-bg);
+	background-image: var(--topography-pattern);
+	color: var(--color-text);
+
+	font-family: var(--font-base);
+	font-size: var(--step-0);
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-weight: 400;
+}
+
+h1,
+h2 {
+	text-transform: uppercase;
+}
+
+h1 {
+	font-size: var(--step-6);
+	line-height: 1;
+}
+
+h2 {
+	font-size: var(--step-4);
+}
+
+h3 {
+	font-size: var(--step-3);
+}
+
+p {
+	max-inline-size: var(--measure);
+}
+
+a {
+	color: inherit;
+	text-decoration-color: var(--color-underline);
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--border-width);
+	text-underline-offset: var(--space-3xs);
+
+	&:hover {
+		--color-underline: currentColor;
+	}
+}
+
+em {
+	font-style: normal;
+}

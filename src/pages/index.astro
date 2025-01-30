@@ -1,7 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Header from "../components/Header.astro";
+import headshotImg from "../assets/images/headshot.jpg";
 import FormattedDate from "../components/FormattedDate.astro";
+import Footer from "../components/Footer.astro";
 
 const postEntries = await getCollection("posts");
 const sortedPostEntries = postEntries.sort(
@@ -11,22 +15,48 @@ const sortedPostEntries = postEntries.sort(
 ---
 
 <!-- TODO: update page desc -->
-<BaseLayout title="Nishit Jalan" desc="TKTK">
-	<h1>Nishit's Blog</h1>
-	<h2>Latest posts</h2>
-	<ol>
-		{
-			sortedPostEntries.map((entry) => {
-				const entryDate = new Date(entry.data.pubDate);
-				return (
-					<li>
-						<h3>
-							<a href={`/posts/${entry.id}`}>{entry.data.title}</a>
-						</h3>
-						<FormattedDate pubDate={entryDate} />
-					</li>
-				);
-			})
-		}
-	</ol>
+<BaseLayout class="home-page grid wrapper" title="Nishit Jalan" desc="TKTK">
+	<Header class="grid">
+		<div class="hero grid">
+			<h1>Unlock Your True Potential with <em>Nishit Jalan</em></h1>
+			<p>
+				<span>
+					Learn from a decorated army colonel who brings years of leadership and
+					coaching expertise to help you conquer your goals
+				</span>
+			</p>
+		</div>
+		<div class="headshot">
+			<Picture
+				src={headshotImg}
+				formats={["avif", "webp"]}
+				alt=""
+				widths={[480, 960, 1920]}
+				sizes={`(min-width: 64em) 480px, 100vw`}
+				quality="high"
+				loading={"eager"}
+			/>
+		</div>
+	</Header>
+	<main class="flow grid" id="main">
+		<section id="latest-posts" class="grid">
+			<h2 class="cluster">
+				<span>Latest posts</span>
+			</h2>
+			<ol class="flow" role="list">
+				{
+					sortedPostEntries.map((entry) => {
+						const entryDate = new Date(entry.data.pubDate);
+						return (
+							<li class="flow">
+								<a href={`/posts/${entry.id}`}>{entry.data.title}</a>
+								<FormattedDate pubDate={entryDate} />
+							</li>
+						);
+					})
+				}
+			</ol>
+		</section>
+	</main>
+	<Footer />
 </BaseLayout>

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import Footer from "../../components/Footer.astro";
 import { getCollection, render } from "astro:content";
 
 // 1. Generate a new path for every collection entry
@@ -18,9 +20,25 @@ const postDate = new Date(post.data.pubDate);
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={post.data.title} desc="TKTK">
-	<a href="/">← Back</a>
-	<h1>{post.data.title}</h1>
-	<FormattedDate pubDate={postDate} />
-	<Content />
+<BaseLayout class="post-page wrapper" title={post.data.title} desc="TKTK">
+	<Header class="region" />
+	<div class="post-page-inner grid">
+		<main id="main" class="grid">
+			<a class="back-to-home" href="/">← Back Home</a>
+			<article class="flow">
+				<h1>{post.data.title}</h1>
+				<FormattedDate pubDate={postDate} />
+				<Content />
+			</article>
+		</main>
+		<!-- <aside class="flow">
+			<img src="/images/headshot.jpg" alt="Nishit Jalan portrait" />
+			<p>
+				TKTK lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
+				accusamus, repellat dolorem animi recusandae eum placeat hic
+				perferendis! Vel, illo.
+			</p>
+		</aside> -->
+	</div>
+	<Footer />
 </BaseLayout>

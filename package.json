@@ -3,13 +3,16 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "tinacms dev -c \"astro dev\"",
+		"dev": "tinacms dev -c \"astro dev --host\"",
 		"build": "tinacms build && astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
 	"dependencies": {
 		"astro": "^5.1.8",
+		"astro-font": "^0.1.81",
+		"postcss-custom-media": "^11.0.5",
+		"postcss-utopia": "^1.1.0",
 		"tinacms": "^2.6.0"
 	},
 	"devDependencies": {

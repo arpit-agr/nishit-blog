@@ -1,0 +1,253 @@
+:where(.home-page) {
+	--grid-row-gap: 0;
+	--grid-column-gap: var(--space-m);
+
+	grid-template-columns: repeat(5, 1fr);
+
+	> * {
+		grid-column: 1/-1;
+	}
+
+	.site-header {
+		grid-template-columns: subgrid;
+		grid-template-rows:
+			var(--region-space, var(--space-l-xl)) auto minmax(0, 1fr)
+			var(--region-space, var(--space-l-xl));
+		block-size: 100svh;
+		overflow: clip;
+
+		h1 {
+			max-inline-size: 15ch;
+			font-size: var(--space-54-149);
+			letter-spacing: -0.01em;
+			text-transform: uppercase;
+			text-shadow: 2px 2px black;
+
+			em {
+				color: var(--color-accent);
+			}
+		}
+
+		p {
+			font-size: var(--space-15-25);
+			text-wrap: balance;
+		}
+
+		a {
+			display: inline-block;
+		}
+
+		nav {
+			order: 1;
+			grid-column: 1/-1;
+			grid-row: 2/3;
+		}
+
+		.hero {
+			--grid-row-gap: var(--space-s);
+
+			order: 3;
+			grid-row: -3/-2;
+			z-index: 2;
+
+			grid-template-columns: subgrid;
+			grid-template-rows: 1fr auto;
+			align-items: last baseline;
+
+			grid-column: 1/-1;
+			inline-size: 100%;
+
+			> * {
+				grid-column: 1/-1;
+			}
+		}
+
+		.headshot {
+			position: relative;
+			order: 2;
+			grid-column: 1/-1;
+			grid-row: 3/-2;
+			margin-block-start: var(--space-l-xl);
+			overflow: clip;
+
+			img {
+				inline-size: 100%;
+				block-size: 120%;
+				object-fit: cover;
+				object-position: 70% 10%;
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background-image: linear-gradient(
+						90deg,
+						var(--color-bg) 0,
+						oklch(from var(--color-bg) l c h / 0.986) 0.97%,
+						oklch(from var(--color-bg) l c h / 0.945) 2.07833333%,
+						oklch(from var(--color-bg) l c h / 0.883) 3.29666667%,
+						oklch(from var(--color-bg) l c h / 0.803) 4.60166667%,
+						oklch(from var(--color-bg) l c h / 0.711) 5.96666667%,
+						oklch(from var(--color-bg) l c h / 0.61) 7.365%,
+						oklch(from var(--color-bg) l c h / 0.504) 8.77166667%,
+						oklch(from var(--color-bg) l c h / 0.398) 10.16%,
+						oklch(from var(--color-bg) l c h / 0.296) 11.505%,
+						oklch(from var(--color-bg) l c h / 0.203) 12.78%,
+						oklch(from var(--color-bg) l c h / 0.122) 13.95833333%,
+						oklch(from var(--color-bg) l c h / 0.059) 15.01666667%,
+						oklch(from var(--color-bg) l c h / 0.016) 15.92833333%,
+						oklch(from var(--color-bg) l c h / 0) 16.66666667%,
+						oklch(from var(--color-bg) l c h / 0) 83.33333333%,
+						oklch(from var(--color-bg) l c h / 0.016) 84.07166667%,
+						oklch(from var(--color-bg) l c h / 0.059) 84.98333333%,
+						oklch(from var(--color-bg) l c h / 0.122) 86.04166667%,
+						oklch(from var(--color-bg) l c h / 0.203) 87.22%,
+						oklch(from var(--color-bg) l c h / 0.296) 88.495%,
+						oklch(from var(--color-bg) l c h / 0.398) 89.84%,
+						oklch(from var(--color-bg) l c h / 0.504) 91.22833333%,
+						oklch(from var(--color-bg) l c h / 0.61) 92.635%,
+						oklch(from var(--color-bg) l c h / 0.711) 94.03333333%,
+						oklch(from var(--color-bg) l c h / 0.803) 95.39833333%,
+						oklch(from var(--color-bg) l c h / 0.883) 96.70333333%,
+						oklch(from var(--color-bg) l c h / 0.945) 97.92166667%,
+						oklch(from var(--color-bg) l c h / 0.986) 99.03%,
+						var(--color-bg)
+					),
+					linear-gradient(
+						0deg,
+						var(--color-bg) 0,
+						var(--color-bg) 21.48148148%,
+						oklch(from var(--color-bg) l c h / 0.986) 23.63703704%,
+						oklch(from var(--color-bg) l c h / 0.945) 26.1%,
+						oklch(from var(--color-bg) l c h / 0.883) 28.80740741%,
+						oklch(from var(--color-bg) l c h / 0.803) 31.70740741%,
+						oklch(from var(--color-bg) l c h / 0.711) 34.74074074%,
+						oklch(from var(--color-bg) l c h / 0.61) 37.84814815%,
+						oklch(from var(--color-bg) l c h / 0.504) 40.97407407%,
+						oklch(from var(--color-bg) l c h / 0.398) 44.05925926%,
+						oklch(from var(--color-bg) l c h / 0.296) 47.04814815%,
+						oklch(from var(--color-bg) l c h / 0.203) 49.88148148%,
+						oklch(from var(--color-bg) l c h / 0.122) 52.5%,
+						oklch(from var(--color-bg) l c h / 0.059) 54.85185185%,
+						oklch(from var(--color-bg) l c h / 0.016) 56.87777778%,
+						oklch(from var(--color-bg) l c h / 0) 58.51851852%
+					);
+				pointer-events: none;
+			}
+		}
+	}
+
+	main {
+		grid-template-columns: subgrid;
+	}
+
+	#latest-posts {
+		--grid-row-gap: var(--space-l-xl);
+
+		grid-column: 1/-1;
+		grid-template-columns: subgrid;
+
+		> * {
+			grid-column: 1/-1;
+		}
+
+		h2 {
+			--cluster-gap: var(--space-xs);
+			align-content: baseline;
+
+			&:after {
+				content: "";
+				flex-grow: 999;
+				block-size: var(--border-width);
+				background-color: var(--color-underline);
+			}
+		}
+
+		a {
+			text-wrap: balance;
+		}
+
+		time {
+			--flow-space: var(--space-3xs);
+		}
+	}
+
+	@media (--lg-n-above) and (--landscape) {
+		.site-header {
+			block-size: unset;
+			min-block-size: 100svh;
+			border-block-end: unset;
+
+			&:after {
+				content: "";
+				position: absolute;
+				inset-block-end: var(--space-l-xl);
+				inset-inline: 0;
+				block-size: var(--border-width);
+				border-block-start: var(--border-width) solid var(--color-underline);
+				z-index: -1;
+			}
+
+			> :is(nav, .hero, .headshot) {
+				order: unset;
+			}
+
+			nav {
+				grid-column: 1/4;
+			}
+
+			.hero {
+				grid-row: 3/4;
+				grid-template-rows: unset;
+				align-self: center;
+
+				h1 {
+					grid-column: 1/4;
+					line-height: 0.9;
+				}
+
+				p {
+					grid-column: span 2;
+					translate: 0 calc(-1 * var(--space-3xs));
+
+					span {
+						/* box-shadow: inset 0 -1lh 0 0 var(--color-bg); */
+
+						box-shadow: inset 0 -1lh 0 0 var(--color-text);
+						color: var(--color-bg);
+						-webkit-font-smoothing: auto;
+					}
+				}
+			}
+
+			.headshot {
+				margin-block-start: unset;
+				grid-column: -3/-1;
+				grid-row: 1/-2;
+				z-index: -1;
+				border-inline-start: var(--border-width) solid var(--color-underline);
+				box-shadow: var(--shadow-5);
+				translate: var(--grid-column-gap) 0;
+
+				img {
+					block-size: 175%;
+				}
+
+				&:after {
+					display: none;
+				}
+			}
+		}
+
+		#latest-posts {
+			h2 {
+				grid-column: 1/3;
+			}
+
+			ol {
+				grid-column: 3/-1;
+			}
+		}
+	}
+}

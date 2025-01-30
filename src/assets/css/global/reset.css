@@ -1,0 +1,155 @@
+/* Modern reset: https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* Open-Props normalize: https://github.com/argyleink/open-props/blob/59bb7e5399df56f8b1a666e0d9fb2e5f7521ab30/src/extra/normalize.src.css */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+/* Explainer: https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/ */
+:where(html) {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+/* Set core html defaults */
+:where(html) {
+	block-size: 100%;
+
+	@media (--motionOK) {
+		scroll-behavior: smooth;
+	}
+}
+
+/* Set core body defaults */
+:where(body) {
+	min-block-size: 100vh;
+	line-height: 1.5;
+	/* -webkit-font-smoothing: antialiased; */
+
+	@supports (min-block-size: 100svh) {
+		min-block-size: 100svh;
+	}
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+:where(body, h1, h2, h3, h4, p, ol, ul, figure, blockquote, pre, dl, dd, hr) {
+	margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+:where(ol[role="list"], ul[role="list"]) {
+	list-style: none;
+	padding: 0; /* Browsers apply a default padding-inline-start of 40px */
+}
+
+/* Set shorter line heights on headings and interactive elements */
+:where(h1, h2) {
+	line-height: 1.1;
+	text-box: trim-both cap alphabetic;
+}
+
+:where(button, input, label) {
+	line-height: 1;
+}
+
+/* Balance text wrapping on headings */
+:where(h1, h2, h3, h4) {
+	text-wrap: balance;
+}
+
+/* Balance text wrapping on paragraphs */
+:where(p) {
+	text-wrap: pretty;
+}
+
+/* A elements that don't have a class get default styles */
+:where(a:not([class])) {
+	text-decoration-skip-ink: auto;
+	color: currentColor;
+}
+
+/* Sets the offset distance of an underline */
+:where(a, u, ins, abbr) {
+	text-underline-offset: 2px;
+}
+
+/* Make images easier to work with */
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+	display: block;
+}
+
+:where(img, svg, picture) {
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+/* Make hr easier to work with */
+:where(hr) {
+	border-width: 0;
+	border-style: solid;
+	block-size: 2px;
+	background-color: currentColor;
+}
+
+/* Inherit fonts for inputs and buttons */
+:where(input, button, textarea, select),
+:where(input[type="file"])::-webkit-file-upload-button {
+	font: inherit;
+	font-size: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+:where(textarea:not([rows])) {
+	min-block-size: 10em;
+}
+
+/* Sets the mouse cursor */
+:where(
+		a[href],
+		area,
+		button,
+		input:not(
+				[type="text"],
+				[type="email"],
+				[type="number"],
+				[type="password"],
+				[type=""],
+				[type="tel"],
+				[type="url"]
+			),
+		label[for],
+		select,
+		summary,
+		[tabindex]:not([tabindex*="-"])
+	) {
+	cursor: pointer;
+}
+
+/* Disable additional non-standard gestures such as double-tap to zoom */
+:where(
+		a[href],
+		area,
+		button,
+		input,
+		label[for],
+		select,
+		summary,
+		textarea,
+		[tabindex]:not([tabindex*="-"])
+	) {
+	touch-action: manipulation;
+	/* -webkit-tap-highlight-color: transparent; */
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+/* TODO: Adjust this if there is a fixed header */
+:target {
+	scroll-margin-block: 5ex;
+}

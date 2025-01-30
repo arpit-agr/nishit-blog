@@ -1,31 +1,23 @@
-@view-transition {
-	navigation: auto;
-}
+@layer global, composition, utilities, blocks, exceptions;
 
-html {
-	color-scheme: light dark;
-}
+@import "global/reset.css" layer(global);
+@import "global/variables.css" layer(global);
+@import "global/global.css" layer(global);
 
-body {
-	max-inline-size: 66ch;
-	margin-inline: auto;
-	padding-inline: 1rem;
+@import "composition/cluster.css" layer(composition);
+@import "composition/flow.css" layer(composition);
+@import "composition/grid.css" layer(composition);
+@import "composition/repel.css" layer(composition);
+@import "composition/sidebar.css" layer(composition);
+@import "composition/stack.css" layer(composition);
+@import "composition/switcher.css" layer(composition);
+@import "composition/wrapper.css" layer(composition);
 
-	background-color: light-dark(#fffff8, #151515);
-	color: light-dark(#111, #ddd);
+@import "blocks/header.css" layer(blocks);
+@import "blocks/footer.css" layer(blocks);
 
-	font-family: system-ui;
-	line-height: 1.5;
+@import "utilities/region.css" layer(utilities);
+@import "utilities/visually-hidden.css" layer(utilities);
 
-	@media (prefers-color-scheme: dark) {
-		-webkit-font-smoothing: antialiased;
-	}
-}
-
-h1 {
-	line-height: 1.2;
-}
-
-ol {
-	padding-inline-start: unset;
-}
+@import "exceptions/home-page.css" layer(exceptions);
+@import "exceptions/post-page.css" layer(exceptions);

@@ -1,12 +1,17 @@
 ---
 import "../assets/css/style.css";
+import { join } from "node:path";
+import { AstroFont } from "astro-font";
+import SkipToMain from "../components/SkipToMain.astro";
+import Noise from "../components/Noise.astro";
 
 interface Props {
+	class?: string;
 	title: string;
 	desc: string;
 }
 
-const { title = "Nishit Jalan", desc } = Astro.props;
+const { class: className, title = "Nishit Jalan", desc } = Astro.props;
 // TODO: check the canonical URL for markdown layouts
 // https://docs.astro.build/en/basics/layouts/#markdown-layouts
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -21,9 +26,35 @@ const socialImageURL = new URL("/images/preview.png", Astro.url);
 
 		<title>{title}</title>
 
-		<script type="module">
+		<script>
 			document.documentElement.classList.add("has-js");
 		</script>
+
+		<AstroFont
+			config={[
+				{
+					name: "League Gothic",
+					src: [
+						{
+							style: "normal",
+							weight: "400",
+							path: join(
+								process.cwd(),
+								"public",
+								"fonts",
+								"LeagueGothic-Regular-VariableFont_wdth-subset.woff2"
+							),
+						},
+					],
+					preload: true,
+					display: "swap",
+					selector: ".display-text",
+					cssVariable: "font-display",
+					fallback: "sans-serif",
+					fallbackName: "League Gothic Fallback",
+				},
+			]}
+		/>
 
 		<meta name="description" content={desc} />
 		<meta property="og:title" content={title} />
@@ -36,21 +67,14 @@ const socialImageURL = new URL("/images/preview.png", Astro.url);
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<!-- TODO: update theme color -->
-		<meta
-			name="theme-color"
-			content="151515"
-			media="(prefers-color-scheme: dark)"
-		/>
-		<meta
-			name="theme-color"
-			content="#fffff8"
-			media="(prefers-color-scheme: light)"
-		/>
+		<meta name="theme-color" content="#000c00" />
 		<meta name="generator" content={Astro.generator} />
 	</head>
-	<body>
+	<body class={className}>
+		<SkipToMain />
 		<slot>
 			<p>This is my fallback content, if there is no child passed into slot</p>
 		</slot>
+		<Noise />
 	</body>
 </html>

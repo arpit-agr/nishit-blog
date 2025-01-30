@@ -1,0 +1,16 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<header class:list={["site-header", className]}>
+	<nav class="cluster">
+		<a href="/">Nishit Jalan</a>
+		<a href="/#latest-posts">Blog</a>
+		<a href="#">Contact</a>
+	</nav>
+	<slot />
+</header>

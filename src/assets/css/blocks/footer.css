@@ -1,0 +1,19 @@
+footer {
+	/* --region-end-space: var(--space-s-m); */
+
+	p {
+		margin-inline-start: auto;
+		text-align: end;
+	}
+
+	a {
+		display: inline-block;
+		padding-block: 0.5ex;
+	}
+
+	.footer-inner {
+		padding-block: 1ex;
+		border-block-start: var(--border-width) solid var(--color-underline);
+		font-size: var(--step--2);
+	}
+}

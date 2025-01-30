@@ -1,0 +1,44 @@
+.site-header {
+	position: relative;
+
+	nav {
+		--cluster-gap: var(--space-s);
+
+		border-block-end: var(--border-width) solid var(--color-underline);
+		font-size: var(--step--1);
+
+		a {
+			position: relative;
+			padding-block: 0.5ex;
+			text-decoration-line: none;
+
+			&:hover {
+				color: var(--color-accent);
+			}
+
+			&:after {
+				--text-decoration-size: 2px;
+				content: "";
+				position: absolute;
+				inset-inline: auto 0;
+				inset-block-end: calc(-1 / 2 * var(--text-decoration-size));
+				inline-size: 0%;
+				block-size: var(--text-decoration-size);
+				background-color: transparent;
+				transition: inset-inline var(--transition-base),
+					inline-size var(--transition-base),
+					background-color var(--transition-base);
+			}
+
+			&:hover:after {
+				inline-size: 100%;
+				inset-inline: 0 auto;
+				background-color: currentColor;
+			}
+		}
+
+		> :nth-last-child(2) {
+			margin-inline-start: auto;
+		}
+	}
+}

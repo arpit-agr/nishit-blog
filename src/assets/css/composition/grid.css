@@ -1,0 +1,49 @@
+/* AUTO GRID
+Related Every Layout: https://every-layout.dev/layouts/grid/
+More info on the flexible nature: https://piccalil.li/tutorial/create-a-responsive-grid-layout-with-no-media-queries-using-css-grid/
+A flexible layout that will create an auto-fill grid with
+configurable grid item sizes
+
+CUSTOM PROPERTIES AND CONFIGURATION
+--grid-gap (1em): This defines the space
+between each item.
+
+--grid-min-item-size (16rem): How large each item should be
+ideally, as a minimum.
+
+--grid-placement (auto-fill): Set either auto-fit or auto-fill
+to change how empty grid tracks are handled 
+
+auto-fill: Fit as many possible columns as possible on a row, even if they are empty.
+
+auto-fit: Fit whatever columns there are into the space. Prefer expanding columns to fill space rather than empty columns. */
+
+.grid {
+	display: grid;
+	gap: var(--grid-row-gap, var(--grid-gap, 1em))
+		var(--grid-column-gap, var(--grid-gap, 1em));
+}
+
+.grid[data-layout="auto"] {
+	grid-template-columns: repeat(
+		var(--grid-placement, auto-fill),
+		minmax(var(--grid-min-item-size, min(16rem, 100%)), 1fr)
+	);
+}
+
+/* A split 50/50 layout */
+/* TODO: what is the 33rem below  */
+.grid[data-layout="50-50"] {
+	--grid-placement: auto-fit;
+	--grid-min-item-size: clamp(
+		min(16rem, 100%),
+		(50vw - (2 * var(--page-gutter))),
+		33rem
+	);
+}
+
+/* Three column grid layout */
+.grid[data-layout="thirds"] {
+	--grid-placement: auto-fit;
+	--grid-min-item-size: clamp(min(16rem, 100%), 33%, 20rem);
+}
