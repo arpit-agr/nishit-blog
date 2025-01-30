@@ -38,12 +38,12 @@ const sortedPostEntries = postEntries.sort(
 			/>
 		</div>
 	</Header>
-	<main class="flow grid" id="main">
+	<main class="flow grid region" id="main">
 		<section id="latest-posts" class="grid">
 			<h2 class="cluster">
 				<span>Latest posts</span>
 			</h2>
-			<ol class="flow" role="list">
+			<ol class="grid" role="list">
 				{
 					sortedPostEntries.map((entry) => {
 						const entryDate = new Date(entry.data.pubDate);
