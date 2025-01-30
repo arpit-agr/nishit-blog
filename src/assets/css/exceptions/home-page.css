@@ -183,15 +183,15 @@
 		}
 	}
 
-	@media (--md-n-above) and (--below-lg) {
+	@media (--md-n-above) {
 		#latest-posts ol {
 			> li {
 				grid-column: span 2;
 			}
 
-			/* > li:nth-child(even) {
+			> li:nth-child(even) {
 				grid-column: -3/-1;
-			} */
+			}
 		}
 	}
 
@@ -246,12 +246,13 @@
 			.headshot {
 				margin-block-start: unset;
 				grid-column: -3/-1;
-				grid-row: 1/-1;
+				grid-row: 1/-2;
+				z-index: -1;
 				box-shadow: var(--shadow-5);
 				translate: var(--grid-column-gap) 0;
 
 				img {
-					block-size: 175%;
+					block-size: 150%;
 				}
 
 				&:after {
@@ -270,7 +271,7 @@
 			}
 
 			ol {
-				grid-column: 2/4;
+				grid-column: 2/-1;
 			}
 		}
 	}
