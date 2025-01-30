@@ -13,8 +13,7 @@
 		grid-template-rows:
 			var(--region-space, var(--space-l-xl)) auto minmax(0, 1fr)
 			var(--region-space, var(--space-l-xl));
-		block-size: 100svh;
-		overflow: clip;
+		min-block-size: min(60rem, 100svh);
 
 		h1 {
 			max-inline-size: 15ch;
@@ -195,20 +194,15 @@
 		}
 	}
 
-	@media (--lg-n-above) and (--landscape) {
+	@media (--lg-n-above) {
 		.site-header {
-			block-size: unset;
-			min-block-size: 100svh;
-			border-block-end: unset;
-
 			&:after {
 				content: "";
 				position: absolute;
-				inset-block-end: var(--space-l-xl);
+				inset-block-start: 100%;
 				inset-inline: 0;
 				block-size: var(--space-xs);
 				border-block-start: var(--space-xs) solid var(--color-text);
-				z-index: -1;
 			}
 
 			> :is(nav, .hero, .headshot) {
@@ -222,7 +216,6 @@
 			.hero {
 				grid-row: 3/4;
 				grid-template-rows: unset;
-				padding-block-end: var(--region-space, var(--space-l-xl));
 
 				h1 {
 					grid-column: 1/4;
@@ -231,7 +224,8 @@
 
 				p {
 					grid-column: span 2;
-					translate: 0 calc(-1 * var(--space-3xs));
+					translate: calc(-1 * var(--grid-column-gap))
+						calc(-1 * var(--space-3xs));
 
 					span {
 						/* box-shadow: inset 0 -1lh 0 0 var(--color-bg); */
@@ -246,10 +240,7 @@
 			.headshot {
 				margin-block-start: unset;
 				grid-column: -3/-1;
-				grid-row: 1/-2;
-				z-index: -1;
-				box-shadow: var(--shadow-5);
-				translate: var(--grid-column-gap) 0;
+				grid-row: 1/-1;
 
 				img {
 					block-size: 150%;
@@ -273,6 +264,12 @@
 			ol {
 				grid-column: 2/-1;
 			}
+		}
+
+		.site-header + main {
+			margin-block-start: calc(
+				var(--space-xs) + var(--region-space, var(--space-l-xl))
+			);
 		}
 	}
 }

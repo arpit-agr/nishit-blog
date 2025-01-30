@@ -1,4 +1,5 @@
 :root {
+  --wrapper-max-width: 83rem;
   --page-gutter: var(--space-s-l);
 	--measure: 66ch;
 
