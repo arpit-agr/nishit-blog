@@ -9,7 +9,8 @@ const { pubDate, class: className } = Astro.props;
 
 <time class={className} datetime={pubDate.toISOString()}>
 	{
-		pubDate.toLocaleDateString("en-gb", {
+		pubDate.toLocaleDateString("en-IN", {
+			timeZone: "Asia/Kolkata",
 			year: "numeric",
 			month: "short",
 			day: "numeric",
