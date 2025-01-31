@@ -16,5 +16,7 @@ Mentorship is a powerful tool that can accelerate personal and professional grow
 ## Key Takeaways
 
 ✅ Find a mentor who aligns with your goals.
+
 ✅ Set clear expectations for mentorship.
+
 ✅ Act on the advice and lessons learned.
