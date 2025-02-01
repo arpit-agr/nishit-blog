@@ -13,7 +13,12 @@
 	);
 
   --font-base: system-ui;
-
+  --leading-flat: 1;
+	--leading-tight: 1.2;
+	--leading-snug: 1.4;
+	--leading-normal: 1.5;
+	--leading-relaxed: 1.75;
+	--leading-loose: 1.9;
   --border-width: 2px;
 
   @media (--HDcolor) {

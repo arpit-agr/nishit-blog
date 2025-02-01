@@ -7,9 +7,20 @@
 		grid-column: 1/-1;
 	}
 
-	:is(figure:has(blockquote), picture, img),
-	:is(figure:has(blockquote), picture, img) + *:not(h2, h3) {
+	:where(figure:has(blockquote), .post-image),
+	:where(figure:has(blockquote), .post-image) + *:not(h2, h3) {
 		--flow-space: 1lh;
+	}
+
+	.post-image {
+		--grid-row-gap: var(--space-xs);
+		grid-template-columns: subgrid;
+
+		figcaption {
+			max-inline-size: var(--measure);
+			font-size: var(--step--2);
+			text-wrap: pretty;
+		}
 	}
 
 	figure:has(blockquote) {
@@ -18,7 +29,8 @@
 
 		blockquote {
 			--flow-space: initial;
-			font-size: var(--step-1);
+			/* font-size: var(--step-1);
+			line-height: var(--leading-snug); */
 		}
 
 		figcaption {
@@ -30,38 +42,26 @@
 	@media (--md-n-above) {
 		grid-template-columns: repeat(10, 1fr);
 
-		> :not(h1, time, picture, img) {
+		> :not(h1, time, .post-image) {
 			grid-column: 1/-2;
 		}
 
-		> :is(h1, time, picture, img) {
+		> :where(h1, time, .post-image) {
+			grid-column: 1/-1;
+		}
+
+		> .post-image > * {
 			grid-column: 1/-1;
 		}
 	}
 
 	@media (--lg-n-above) {
-		> :not(h1, time, picture, img) {
+		> :not(.post-image) {
 			grid-column: 2/-2;
 		}
 
-		> :is(h1, time, picture, img) {
+		> .post-image figcaption {
 			grid-column: 2/-1;
-		}
-	}
-
-	@media (--xl-n-above) {
-		> :not(h1, time, picture, img) {
-			grid-column: 2/-3;
-		}
-
-		:is(h1, picture, img) {
-			grid-column: 2/-1;
-		}
-
-		time {
-			--flow-space: 0;
-			grid-row: 1/2;
-			grid-column: 1/2;
 		}
 	}
 }

@@ -3,11 +3,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Blockquote from "../../components/Blockquote.astro";
+import BlogPostImage from "../../components/BlogPostImage.astro";
 import Footer from "../../components/Footer.astro";
 import { getCollection, render } from "astro:content";
 
 const components = {
 	Blockquote,
+	img: BlogPostImage,
 };
 
 // 1. Generate a new path for every collection entry
