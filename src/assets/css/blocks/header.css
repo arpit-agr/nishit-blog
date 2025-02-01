@@ -13,7 +13,7 @@
 			text-decoration-line: none;
 
 			&:after {
-				--text-decoration-size: var(--section-border-width);
+				--text-decoration-size: var(--space-4xs);
 				content: "";
 				position: absolute;
 				inset-inline: auto 0;
@@ -31,7 +31,7 @@
 			&:hover:after {
 				inline-size: 100%;
 				inset-inline: 0 auto;
-				background-color: currentColor;
+				background-color: var(--color-underline-hover);
 			}
 		}
 

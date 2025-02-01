@@ -60,14 +60,16 @@ a {
 	color: inherit;
 	text-decoration-color: var(--color-underline);
 	text-decoration-style: solid;
-	text-decoration-thickness: var(--border-width);
+	text-decoration-thickness: calc(1 / 2 * var(--space-4xs));
 	text-underline-offset: var(--space-3xs);
-	/* transition: color var(--transition-base),
-		--color-underline var(--transition-base); */
+	transition: color var(--transition-base),
+		text-decoration-color var(--transition-base),
+		text-decoration-thickness var(--transition-base);
 
 	&:hover {
-		--color-underline: currentColor;
 		color: var(--color-accent);
+		text-decoration-color: var(--color-underline-hover);
+		text-decoration-thickness: var(--space-4xs);
 	}
 }
 

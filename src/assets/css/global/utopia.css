@@ -1,0 +1,42 @@
+:root {
+  /* https://github.com/trys/postcss-utopia */
+  @utopia typeScale({
+    minFontSize: 18,
+    maxFontSize: 20,
+    minTypeScale: 1.2,
+    maxTypeScale: 1.25,
+    positiveSteps: 9,
+    negativeSteps: 2,
+    relativeTo: 'viewport', /* Optional */
+    prefix: 'step'          /* Optional */
+  });
+
+  @utopia spaceScale({
+    minSize: 18,
+    maxSize: 20,
+    positiveSteps: [1.5, 2, 3, 4, 5, 6],
+    negativeSteps: [0.75, 0.5, 0.25, 0.125, 0.0625],
+    customSizes: ['s-l', 'xs-xl'],
+    relativeTo: 'viewport',    /* Optional */
+    prefix: 'space',           /* Optional */
+    usePx: false,              /* Optional */
+  });
+
+  @utopia clamps({
+    pairs: [
+      [54, 149]
+    ],
+    usePx: false,          /* Optional */
+    relativeTo: 'viewport' /* Optional */
+    prefix: 'space',       /* Optional */
+  });
+  
+  @utopia clamps({
+    pairs: [
+      [15, 25]
+    ],
+    usePx: false,          /* Optional */
+    relativeTo: 'viewport' /* Optional */
+    prefix: 'space',       /* Optional */
+  });
+}
