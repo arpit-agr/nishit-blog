@@ -15,11 +15,11 @@
 	.site-header {
 		grid-template-columns: subgrid;
 		grid-template-rows:
-			var(--region-space, var(--space-l-xl))
+			var(--region-space)
 			auto
-			var(--region-space, var(--space-l-xl))
+			var(--region-space)
 			minmax(0, 1fr)
-			var(--region-space, var(--space-l-xl));
+			var(--region-space);
 
 		h1 {
 			max-inline-size: 15ch;
@@ -177,6 +177,8 @@
 
 		time {
 			--flow-space: var(--space-3xs);
+			display: block;
+			font-size: var(--step--1);
 		}
 
 		ol {
@@ -197,10 +199,7 @@
 		@media (--lg-n-above) or (--landscape) {
 			min-block-size: min(
 				56rem,
-				calc(
-					100svh - var(--space-xs) - var(--space-3xs) -
-						var(--region-space, var(--space-l-xl))
-				)
+				calc(100svh - var(--space-xs) - var(--space-3xs) - var(--region-space))
 			);
 		}
 	}
@@ -220,9 +219,7 @@
 	@media (--lg-n-above) {
 		.site-header {
 			+ main {
-				margin-block-start: calc(
-					var(--space-xs) + var(--region-space, var(--space-l-xl))
-				);
+				margin-block-start: calc(var(--space-xs) + var(--region-space));
 			}
 
 			&:after {

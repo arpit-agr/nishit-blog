@@ -7,9 +7,9 @@
 		grid-column: 1/-1;
 	}
 
-	:where(figure:has(blockquote), .post-image),
-	:where(figure:has(blockquote), .post-image) + *:not(h2, h3) {
-		--flow-space: 1lh;
+	:where(.post-blockquote, .post-image),
+	:where(.post-blockquote, .post-image) + *:not(h2, h3) {
+		--flow-space: var(--space-m-l);
 	}
 
 	.post-image {
@@ -23,14 +23,14 @@
 		}
 	}
 
-	figure:has(blockquote) {
+	.post-blockquote {
 		padding-inline-start: var(--space-s);
 		border-inline-start: var(--space-2xs) solid var(--color-accent);
 
 		blockquote {
 			--flow-space: initial;
-			/* font-size: var(--step-1);
-			line-height: var(--leading-snug); */
+			font-size: var(--step-1);
+			line-height: var(--leading-snug);
 		}
 
 		figcaption {
@@ -40,13 +40,13 @@
 	}
 
 	@media (--md-n-above) {
-		grid-template-columns: repeat(10, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 
-		> :not(h1, time, .post-image) {
+		> :not(.post-title, time, .post-image) {
 			grid-column: 1/-2;
 		}
 
-		> :where(h1, time, .post-image) {
+		> :where(.post-title, time, .post-image) {
 			grid-column: 1/-1;
 		}
 
@@ -55,13 +55,27 @@
 		}
 	}
 
-	@media (--lg-n-above) {
+	@media (--xl-n-above) {
 		> :not(.post-image) {
 			grid-column: 2/-2;
 		}
 
+		> .post-title {
+			grid-column: 2/-1;
+		}
+
 		> .post-image figcaption {
 			grid-column: 2/-1;
+		}
+	}
+
+	@media (--below-xxl) {
+		.post-image img {
+			margin-inline-start: calc(-1 * var(--dynamic-page-gutter));
+			min-inline-size: calc(
+				100% + var(--dynamic-page-gutter) + var(--dynamic-page-gutter)
+			);
+			block-size: auto;
 		}
 	}
 }

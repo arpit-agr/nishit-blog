@@ -1,6 +1,11 @@
 :root {
   --wrapper-max-width: 83rem;
   --page-gutter: var(--space-s-l);
+  --dynamic-page-gutter: max( 
+      var(--page-gutter), 
+      calc((100vw - min(var(--wrapper-max-width, 80rem), 100vw))/2) 
+    );
+    --region-space: var(--space-l-xl);
 	--measure: 66ch;
 
   --color-bg: #000c00;
@@ -13,11 +18,11 @@
 	);
 
   --font-base: system-ui;
-  --leading-flat: 1;
-	--leading-tight: 1.2;
+  --leading-flat: 0.9;
+	--leading-tight: 1.1;
 	--leading-snug: 1.4;
 	--leading-normal: 1.5;
-	--leading-relaxed: 1.75;
+	--leading-relaxed: 1.7;
 	--leading-loose: 1.9;
   --border-width: 2px;
 
@@ -93,11 +98,13 @@
 @custom-media --md-n-above (width >= 48em);
 @custom-media --lg-n-above (width >= 64em);
 @custom-media --xl-n-above (width >= 80em);
+@custom-media --xxl-n-above (width >= 120em);
 
 @custom-media --below-sm (width < 30em);
 @custom-media --below-md (width < 48em);
 @custom-media --below-lg (width < 64em);
 @custom-media --below-xl (width < 80em);
+@custom-media --below-xxl (width < 120em);
 
 /* Capability Vars */
 @custom-media --mouse (hover) and (pointer: fine);

@@ -7,7 +7,7 @@ interface Props {
 const { author, source } = Astro.props;
 ---
 
-<figure class="flow">
+<figure class="post-blockquote flow">
 	<blockquote class="flow">
 		<slot />
 	</blockquote>
@@ -16,7 +16,7 @@ const { author, source } = Astro.props;
 		// prettier-ignore
 		(!!author || !!source) && (
 			<figcaption>
-				{author}{author && source && `,`}
+				— {author}{author && source && `,`}
 				<cite>{source}</cite>
 			</figcaption>
 		)
