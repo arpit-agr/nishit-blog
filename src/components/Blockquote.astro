@@ -1,0 +1,24 @@
+---
+interface Props {
+	author?: string;
+	source?: string;
+}
+
+const { author, source } = Astro.props;
+---
+
+<figure class="flow">
+	<blockquote class="flow">
+		<slot />
+	</blockquote>
+
+	{
+		// prettier-ignore
+		(!!author || !!source) && (
+			<figcaption>
+				{author}{author && source && `,`}
+				<cite>{source}</cite>
+			</figcaption>
+		)
+	}
+</figure>

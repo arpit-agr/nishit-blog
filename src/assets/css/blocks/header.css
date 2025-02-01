@@ -9,7 +9,7 @@
 
 		a {
 			position: relative;
-			padding-block: 0.5ex;
+			padding-block: var(--space-3xs);
 			text-decoration-line: none;
 
 			&:hover {
@@ -17,11 +17,11 @@
 			}
 
 			&:after {
-				--text-decoration-size: 2px;
+				--text-decoration-size: var(--border-width);
 				content: "";
 				position: absolute;
 				inset-inline: auto 0;
-				inset-block-end: calc(-1 / 2 * var(--text-decoration-size));
+				inset-block-end: calc(-2 / 3 * var(--text-decoration-size));
 				inline-size: 0%;
 				block-size: var(--text-decoration-size);
 				background-color: transparent;

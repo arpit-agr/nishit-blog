@@ -1,82 +1,67 @@
-.back-to-home {
-	align-self: start;
-	font-size: var(--step--1);
-}
-
-.post-page-inner {
-	--grid-row-gap: var(--space-l-xl);
+.post-content {
+	--grid-row-gap: 0;
 	--grid-column-gap: var(--space-m);
-	grid-template-columns: auto repeat(5, 1fr);
+	grid-template-columns: 1fr;
 
 	> * {
 		grid-column: 1/-1;
 	}
 
-	main {
-		grid-template-columns: subgrid;
-
-		> * {
-			grid-column: 1/-1;
-		}
+	:is(figure:has(blockquote), picture, img),
+	:is(figure:has(blockquote), picture, img) + *:not(h2, h3) {
+		--flow-space: 1lh;
 	}
 
-	aside {
-		position: relative;
-		padding-block-start: var(--space-s-l);
-		align-self: end;
-		font-size: var(--step--2);
+	figure:has(blockquote) {
+		padding-inline-start: var(--space-s);
+		border-inline-start: var(--space-2xs) solid var(--color-accent);
 
-		p {
-			text-wrap: balance;
+		blockquote {
+			--flow-space: initial;
+			font-size: var(--step-1);
 		}
 
-		img {
-			max-block-size: 16rem;
-		}
-
-		&:before {
-			content: "";
-			position: absolute;
-			inset-block-start: 0;
-			inset-inline: 0;
-			block-size: var(--border-width);
-			border-block-start: var(--border-width) solid var(--color-underline);
+		figcaption {
+			--flow-space: initial;
+			font-size: var(--step--1);
 		}
 	}
 
 	@media (--md-n-above) {
-		main {
-			grid-column: 1/-1;
+		grid-template-columns: repeat(10, 1fr);
 
-			.back-to-home {
-				grid-column: 1/2;
-			}
-
-			article {
-				grid-column: 2/-1;
-			}
+		> :not(h1, time, picture, img) {
+			grid-column: 1/-2;
 		}
 
-		aside {
+		> :is(h1, time, picture, img) {
+			grid-column: 1/-1;
+		}
+	}
+
+	@media (--lg-n-above) {
+		> :not(h1, time, picture, img) {
+			grid-column: 2/-2;
+		}
+
+		> :is(h1, time, picture, img) {
 			grid-column: 2/-1;
 		}
 	}
 
 	@media (--xl-n-above) {
-		main {
-			grid-column: 1/6;
-
-			article {
-				grid-column: 2/6;
-			}
+		> :not(h1, time, picture, img) {
+			grid-column: 2/-3;
 		}
 
-		aside {
-			grid-column: -2/-1;
+		:is(h1, picture, img) {
+			grid-column: 2/-1;
+		}
 
-			&:before {
-				display: none;
-			}
+		time {
+			--flow-space: 0;
+			grid-row: 1/2;
+			grid-column: 1/2;
 		}
 	}
 }

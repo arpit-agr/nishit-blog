@@ -3,6 +3,10 @@
 }
 
 body {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+
 	background-color: var(--color-bg);
 	background-image: var(--topography-pattern);
 	color: var(--color-text);
@@ -11,6 +15,10 @@ body {
 	font-size: var(--step-0);
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
+}
+
+.site-header + * {
+	flex-grow: 999;
 }
 
 h1,
@@ -26,7 +34,7 @@ h2 {
 }
 
 h1 {
-	font-size: var(--step-6);
+	font-size: var(--step-7);
 	line-height: 1;
 }
 

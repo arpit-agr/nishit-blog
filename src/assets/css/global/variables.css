@@ -9,17 +9,17 @@
   --color-underline: color-mix(
 		in oklch,
 		var(--color-text),
-		var(--color-bg) 50%
+		var(--color-bg) 75%
 	);
 
   --font-base: system-ui;
 
-  --border-width: var(--space-5xs);
+  --border-width: 2px;
 
   @media (--HDcolor) {
     --color-bg: oklch(13% 0.0518 147.9);
     --color-text: oklch(98.52% 0.0235 147.9);
-    --color-accent: oklch(0.78 0.22 160.23);
+    --color-accent: oklch(78% 0.2415 160.23);
   }
 }
 

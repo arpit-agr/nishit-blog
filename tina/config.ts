@@ -32,6 +32,7 @@ export default defineConfig({
 				name: "post",
 				label: "Posts",
 				path: "src/content/posts",
+				format: "mdx",
 				defaultItem: () => ({
 					pubDate: new Date().toISOString(),
 				}),
@@ -62,6 +63,29 @@ export default defineConfig({
 						name: "body",
 						label: "Body",
 						isBody: true,
+						templates: [
+							{
+								name: "Blockquote",
+								label: "Blockquote",
+								fields: [
+									{
+										name: "children",
+										label: "Quote",
+										type: "rich-text",
+									},
+									{
+										name: "author",
+										label: "Author",
+										type: "string",
+									},
+									{
+										name: "source",
+										label: "Source",
+										type: "string",
+									},
+								],
+							},
+						],
 					},
 				],
 			},
