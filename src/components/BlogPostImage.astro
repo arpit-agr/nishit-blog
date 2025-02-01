@@ -62,6 +62,8 @@ if (!hasMatchingImage) {
 				src={images[matchingPath]()}
 				alt={alt}
 				formats={["avif", "webp"]}
+				widths={[640, 960, 1280, 1920]}
+				sizes={`(max-width: 96rem) 100vw, 1328px`}
 			/>
 		) : (
 			<img src={normalizedSrc} alt={alt} />

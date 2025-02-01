@@ -62,9 +62,12 @@ a {
 	text-decoration-style: solid;
 	text-decoration-thickness: var(--border-width);
 	text-underline-offset: var(--space-3xs);
+	/* transition: color var(--transition-base),
+		--color-underline var(--transition-base); */
 
 	&:hover {
 		--color-underline: currentColor;
+		color: var(--color-accent);
 	}
 }
 

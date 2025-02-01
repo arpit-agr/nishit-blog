@@ -164,9 +164,8 @@
 			&:after {
 				content: "";
 				flex-grow: 999;
-				/* block-size: var(--space-3xs); */
-				block-size: 1ex;
-				background-color: var(--color-text);
+				block-size: var(--section-border-width);
+				background-color: var(--color-underline);
 			}
 		}
 
@@ -199,7 +198,10 @@
 		@media (--lg-n-above) or (--landscape) {
 			min-block-size: min(
 				56rem,
-				calc(100svh - var(--space-xs) - var(--space-3xs) - var(--region-space))
+				calc(
+					100svh - var(--section-border-width) - var(--space-3xs) -
+						var(--region-space)
+				)
 			);
 		}
 	}
@@ -219,7 +221,9 @@
 	@media (--lg-n-above) {
 		.site-header {
 			+ main {
-				margin-block-start: calc(var(--space-xs) + var(--region-space));
+				margin-block-start: calc(
+					var(--section-border-width) + var(--region-space)
+				);
 			}
 
 			&:after {
@@ -227,8 +231,8 @@
 				position: absolute;
 				inset-block-start: 100%;
 				inset-inline: 0;
-				block-size: var(--space-xs);
-				border-block-start: var(--space-xs) solid var(--color-text);
+				block-size: var(--section-border-width);
+				background-color: var(--color-underline);
 			}
 
 			> :is(nav, .hero, .headshot) {

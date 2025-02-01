@@ -1,3 +1,9 @@
+@property --color-underline {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f0fff1;
+}
+
 :root {
   --wrapper-max-width: 83rem;
   --page-gutter: var(--space-s-l);
@@ -13,8 +19,8 @@
   --color-accent: #00dd8a;
   --color-underline: color-mix(
 		in oklch,
-		var(--color-text),
-		var(--color-bg) 75%
+		currentColor,
+		var(--color-bg) 50%
 	);
 
   --font-base: system-ui;
@@ -24,7 +30,8 @@
 	--leading-normal: 1.5;
 	--leading-relaxed: 1.7;
 	--leading-loose: 1.9;
-  --border-width: 2px;
+  --border-width: calc(1/2 * var(--space-4xs));
+  --section-border-width: var(--space-5xs);
 
   @media (--HDcolor) {
     --color-bg: oklch(13% 0.0518 147.9);
@@ -98,13 +105,19 @@
 @custom-media --md-n-above (width >= 48em);
 @custom-media --lg-n-above (width >= 64em);
 @custom-media --xl-n-above (width >= 80em);
-@custom-media --xxl-n-above (width >= 120em);
+@custom-media --xxl-n-above (width >= 96em);
+
+@custom-media --sm-n-below (width <= 30em);
+@custom-media --md-n-below (width <= 48em);
+@custom-media --lg-n-below (width <= 64em);
+@custom-media --xl-n-below (width <= 80em);
+@custom-media --xxl-n-below (width <= 96em);
 
 @custom-media --below-sm (width < 30em);
 @custom-media --below-md (width < 48em);
 @custom-media --below-lg (width < 64em);
 @custom-media --below-xl (width < 80em);
-@custom-media --below-xxl (width < 120em);
+@custom-media --below-xxl (width < 96em);
 
 /* Capability Vars */
 @custom-media --mouse (hover) and (pointer: fine);

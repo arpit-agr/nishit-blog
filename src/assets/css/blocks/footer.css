@@ -11,7 +11,7 @@
 
 	.site-footer-inner {
 		padding-block: 1ex;
-		border-block-start: var(--border-width) solid var(--color-underline);
+		border-block-start: var(--section-border-width) solid var(--color-underline);
 		font-size: var(--step--2);
 	}
 }

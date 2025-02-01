@@ -7,10 +7,16 @@
 		grid-column: 1/-1;
 	}
 
+	h2,
+	h3,
 	:where(.post-blockquote, .post-image),
-	:where(.post-blockquote, .post-image) + *:not(h2, h3) {
+	:where(.post-blockquote, .post-image) + * {
 		--flow-space: var(--space-m-l);
 	}
+
+	/* .post-pub-date {
+		font-size: var(--step--1);
+	} */
 
 	.post-image {
 		--grid-row-gap: var(--space-xs);
@@ -42,11 +48,11 @@
 	@media (--md-n-above) {
 		grid-template-columns: repeat(5, 1fr);
 
-		> :not(.post-title, time, .post-image) {
+		> :not(.post-title, .post-pub-date, .post-image) {
 			grid-column: 1/-2;
 		}
 
-		> :where(.post-title, time, .post-image) {
+		> :where(.post-title, .post-pub-date, .post-image) {
 			grid-column: 1/-1;
 		}
 
@@ -64,12 +70,20 @@
 			grid-column: 2/-1;
 		}
 
+		/* > .post-pub-date {
+			--flow-space: 0;
+			grid-column: 1/2;
+			grid-row: 1/2;
+			align-self: start;
+			text-align: end;
+		} */
+
 		> .post-image figcaption {
 			grid-column: 2/-1;
 		}
 	}
 
-	@media (--below-xxl) {
+	@media (--xxl-n-below) {
 		.post-image img {
 			margin-inline-start: calc(-1 * var(--dynamic-page-gutter));
 			min-inline-size: calc(
