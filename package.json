@@ -4,6 +4,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "tinacms dev -c \"astro dev --host\"",
+		"prebuild": "node scripts/replaceAssetPaths.js",
 		"build": "tinacms build && astro build",
 		"preview": "astro preview",
 		"astro": "astro"
