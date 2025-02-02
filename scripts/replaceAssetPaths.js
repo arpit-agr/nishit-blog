@@ -6,8 +6,8 @@ import { exec } from "child_process";
 const postsDirectory = "/src/content/posts/";
 
 // Define find-and-replace strings
-const find = "/images/";
-let replace = "../../assets/images/";
+const find = "(/images/";
+let replace = "(../../assets/images/";
 
 // Escape special characters in the replacement string for `sed`
 replace = replace.replaceAll(".", "\\.");
