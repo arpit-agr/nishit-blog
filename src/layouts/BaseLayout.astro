@@ -55,6 +55,14 @@ const socialImageURL = new URL("/images/opengraph.png", Astro.url);
 				},
 			]}
 		/>
+		<link
+			rel="preload"
+			href="/images/grunge-texture-comp-13.png"
+			as="image"
+			type="image/png"
+			crossorigin
+		/>
+		<link rel="preload" href="/images/noise.png" as="image" type="image/png" />
 
 		<meta name="description" content={desc} />
 		<meta property="og:title" content={title} />

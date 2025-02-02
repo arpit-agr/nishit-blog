@@ -10,14 +10,15 @@
 	h2,
 	h3,
 	:where(.post-blockquote, .post-image),
-	:where(.post-blockquote, .post-image) + * {
+	:where(.post-pub-date, .post-blockquote, .post-image) + * {
 		--flow-space: var(--space-m-l);
 	}
 
 	.post-pub-date {
-		--flow-space: 0;
 		order: -1;
 		font-size: var(--step--1);
+		font-variant-caps: all-small-caps;
+		font-variant-numeric: tabular-nums;
 	}
 
 	.post-title {
