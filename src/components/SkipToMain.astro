@@ -2,11 +2,16 @@
 
 <style>
 	a {
+		padding-block: var(--space-3xs);
+		background-color: var(--color-bg);
+
 		font-size: var(--step--1);
+		text-decoration-line: none;
 	}
 
 	a:focus-visible {
 		position: absolute;
-		inset-block-start: 1em;
+		inset-block-start: var(--space-s);
+		z-index: 1;
 	}
 </style>
