@@ -1,4 +1,5 @@
 .site-header {
+	--region-start-space: var(--space-s);
 	position: relative;
 
 	nav {

@@ -14,9 +14,15 @@
 		--flow-space: var(--space-m-l);
 	}
 
-	/* .post-pub-date {
+	.post-pub-date {
+		--flow-space: 0;
+		order: -1;
 		font-size: var(--step--1);
-	} */
+	}
+
+	.post-title {
+		margin-block-start: var(--space-s);
+	}
 
 	.post-image {
 		--grid-row-gap: var(--space-xs);

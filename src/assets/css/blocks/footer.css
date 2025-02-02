@@ -1,4 +1,6 @@
 .site-footer {
+	--region-end-space: var(--space-s);
+
 	p {
 		margin-inline-start: auto;
 		text-align: end;

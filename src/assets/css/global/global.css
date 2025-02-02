@@ -60,7 +60,7 @@ a {
 	color: inherit;
 	text-decoration-color: var(--color-underline);
 	text-decoration-style: solid;
-	text-decoration-thickness: calc(1 / 2 * var(--space-4xs));
+	text-decoration-thickness: var(--space-5xs);
 	text-underline-offset: var(--space-3xs);
 	transition: color var(--transition-base),
 		text-decoration-color var(--transition-base),
