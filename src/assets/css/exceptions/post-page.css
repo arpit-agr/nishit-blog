@@ -15,10 +15,15 @@
 	}
 
 	.post-pub-date {
+		--flow-space: 0;
 		order: -1;
 		font-size: var(--step--1);
 		font-variant-caps: all-small-caps;
 		font-variant-numeric: tabular-nums;
+
+		[aria-hidden="true"] {
+			color: var(--color-accent);
+		}
 	}
 
 	.post-title {
@@ -37,7 +42,7 @@
 	}
 
 	.post-blockquote {
-		padding-inline-start: var(--space-s);
+		padding-inline-start: var(--space-xs);
 		border-inline-start: var(--space-2xs) solid var(--color-accent);
 
 		blockquote {
@@ -76,14 +81,6 @@
 		> .post-title {
 			grid-column: 2/-1;
 		}
-
-		/* > .post-pub-date {
-			--flow-space: 0;
-			grid-column: 1/2;
-			grid-row: 1/2;
-			align-self: start;
-			text-align: end;
-		} */
 
 		> .post-image figcaption {
 			grid-column: 2/-1;
