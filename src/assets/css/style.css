@@ -1,5 +1,6 @@
 @layer global, composition, utilities, blocks, exceptions;
 
+@import "global/named-media-queries.css" layer(global);
 @import "global/reset.css" layer(global);
 @import "global/utopia.css" layer(global);
 @import "global/variables.css" layer(global);
