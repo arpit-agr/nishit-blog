@@ -8,8 +8,9 @@ import Footer from "@components/Footer.astro";
 import { getCollection, render } from "astro:content";
 
 const components = {
-	Blockquote,
+	blockquote: Blockquote,
 	img: BlogPostImage,
+	Blockquote,
 };
 
 // 1. Generate a new path for every collection entry

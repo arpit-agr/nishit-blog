@@ -1,0 +1,33 @@
+.post-blockquote {
+	--grid-row-gap: var(--space-xs);
+	--grid-column-gap: var(--space-xs);
+	grid-template-columns: auto 1fr;
+
+	&:has(figcaption) {
+		grid-template-rows: auto auto;
+	}
+
+	> * {
+		grid-column: 2/-1;
+	}
+
+	&:before {
+		content: "";
+		inline-size: var(--space-2xs);
+		grid-row: 1/-1;
+		background-color: var(--color-accent);
+		background-image: var(--dots-pattern);
+		mask-image: url(/images/grunge-texture-comp-13.png);
+		mask-size: 50% 50%;
+	}
+
+	blockquote {
+		--flow-space: 1ex;
+		font-size: var(--step-1);
+		line-height: var(--leading-snug);
+	}
+
+	figcaption {
+		font-size: var(--step--1);
+	}
+}

@@ -46,32 +46,57 @@ export default defineConfig({
 				},
 				fields: [
 					{
-						type: "string",
 						name: "title",
 						label: "Title",
+						type: "string",
 						isTitle: true,
 						required: true,
 					},
 					{
-						type: "datetime",
 						name: "pubDate",
-						label: "Date Published",
+						label: "Publish date",
+						type: "datetime",
 						required: true,
 					},
 					{
-						type: "rich-text",
 						name: "body",
 						label: "Body",
+						type: "rich-text",
 						isBody: true,
+						toolbarOverride: [
+							"heading",
+							"link",
+							"image",
+							"quote",
+							"ul",
+							"ol",
+							"bold",
+							"italic",
+							"embed",
+						],
 						templates: [
 							{
 								name: "Blockquote",
-								label: "Blockquote",
+								label: "Quote (with attribution)",
 								fields: [
 									{
 										name: "children",
 										label: "Quote",
 										type: "rich-text",
+										required: true,
+										toolbarOverride: ["bold", "italic"],
+										ui: {
+											validate: (value) => {
+												const isEmpty = !value?.children?.some((child) =>
+													child.children?.some(
+														(grandchild) => grandchild.text.trim().length > 0
+													)
+												);
+												if (isEmpty) {
+													return "Please enter a quote";
+												}
+											},
+										},
 									},
 									{
 										name: "author",
@@ -80,8 +105,9 @@ export default defineConfig({
 									},
 									{
 										name: "source",
-										label: "Source",
+										label: "Citation",
 										type: "string",
+										description: "Title of the cited creative work",
 									},
 								],
 							},
