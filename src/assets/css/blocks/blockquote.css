@@ -14,7 +14,9 @@
 	&:before {
 		content: "";
 		inline-size: var(--space-2xs);
+		/* -1 is the last line of the explicit grid. And if you haven't defined any explicit rows, then all your rows are implicit. And -1 is the same line as 1. Considering this, we define explicit rows above if figure has figcaption. */
 		grid-row: 1/-1;
+
 		background-color: var(--color-accent);
 		background-image: var(--dots-pattern);
 		mask-image: url(/images/grunge-texture-comp-13.png);
