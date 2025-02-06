@@ -35,6 +35,7 @@ export default defineConfig({
 				format: "mdx",
 				defaultItem: () => ({
 					pubDate: new Date().toISOString(),
+					isDraft: true,
 				}),
 				ui: {
 					filename: {
@@ -56,6 +57,12 @@ export default defineConfig({
 						name: "pubDate",
 						label: "Publish date",
 						type: "datetime",
+						required: true,
+					},
+					{
+						name: "isDraft",
+						label: "Draft",
+						type: "boolean",
 						required: true,
 					},
 					{

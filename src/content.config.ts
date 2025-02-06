@@ -10,6 +10,7 @@ const posts = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		pubDate: z.union([z.string(), z.date()]),
+		isDraft: z.boolean(),
 	}),
 });
 
