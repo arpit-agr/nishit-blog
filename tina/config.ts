@@ -128,8 +128,11 @@ export default defineConfig({
 											"Allowed file formats: jpeg, jpg, png, webp, avif",
 										type: "image",
 										ui: {
+											//remove leading slash if it exists
 											parse(value) {
-												//remove leading slash if it exists
+												return value.startsWith("/") ? value.slice(1) : value;
+											},
+											format(value) {
 												return value.startsWith("/") ? value.slice(1) : value;
 											},
 										},
