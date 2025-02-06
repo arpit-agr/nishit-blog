@@ -17,21 +17,25 @@
 	@media (--md-n-above) {
 		grid-template-columns: repeat(5, 1fr);
 
-		> :not(.post-title, .post-pub-date, .post-image) {
+		> :not(.post-title, .post-pub-date, .post-image[data-width="full-bleed"]) {
 			grid-column: 1/-2;
 		}
 
-		> :where(.post-title, .post-pub-date, .post-image) {
+		> :where(
+				.post-title,
+				.post-pub-date,
+				.post-image[data-width="full-bleed"]
+			) {
 			grid-column: 1/-1;
 		}
 
-		> .post-image > * {
+		> .post-image[data-width="full-bleed"] > * {
 			grid-column: 1/-1;
 		}
 	}
 
 	@media (--xl-n-above) {
-		> :not(.post-image) {
+		> :not(.post-image[data-width="full-bleed"]) {
 			grid-column: 2/-2;
 		}
 
@@ -39,7 +43,7 @@
 			grid-column: 2/-1;
 		}
 
-		> .post-image figcaption {
+		> .post-image[data-width="full-bleed"] figcaption {
 			grid-column: 2/-1;
 		}
 	}
@@ -63,13 +67,30 @@
 
 .post-image {
 	--grid-row-gap: var(--space-xs);
-	grid-template-columns: subgrid;
+
+	img {
+		inline-size: auto;
+		margin-inline-start: calc(-1 * var(--dynamic-page-gutter));
+		min-inline-size: calc(
+			100% + var(--dynamic-page-gutter) + var(--dynamic-page-gutter)
+		);
+		block-size: auto;
+
+		@media (--sm-n-above) {
+			margin-inline-start: unset;
+			min-inline-size: unset;
+		}
+	}
 
 	figcaption {
 		max-inline-size: var(--measure);
 		font-size: var(--step--2);
 		text-wrap: pretty;
 	}
+}
+
+.post-image[data-width="full-bleed"] {
+	grid-template-columns: subgrid;
 
 	img {
 		@media (--xxl-n-below) {
@@ -82,13 +103,17 @@
 
 		@media (--motionOK) {
 			@supports (animation-timeline: view()) {
-				--inset-distance: var(--dynamic-page-gutter);
+				--inset-distance: 0;
 
 				view-timeline-name: --revealing-image;
 				view-timeline-axis: block;
 				animation: reveal linear both;
 				animation-timeline: --revealing-image;
-				animation-range: entry 50% contain 0%;
+				animation-range: entry 25% entry 87.5%;
+
+				@media (--sm-n-above) {
+					--inset-distance: var(--dynamic-page-gutter);
+				}
 
 				@media (--md-n-above) and (--xxl-n-below) {
 					--inset-distance: calc(

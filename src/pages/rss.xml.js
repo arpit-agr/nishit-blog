@@ -11,13 +11,12 @@ export async function GET(context) {
 	const container = await AstroContainer.create({ renderers });
 
 	const Quote = (await import("@components/Quote.astro")).default;
-	const BlogPostImage = (await import("@components/BlogPostImage.astro"))
-		.default;
+	const PostImage = (await import("@components/PostImage.astro")).default;
 
 	const components = {
-		img: BlogPostImage,
 		blockquote: Quote,
 		Quote,
+		PostImage,
 	};
 
 	const publishedPosts = await getCollection("posts", ({ data }) => {

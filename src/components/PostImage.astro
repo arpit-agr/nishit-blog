@@ -1,0 +1,38 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+	src: string;
+	alt: string;
+	caption?: string;
+	isFullWidth: boolean | undefined;
+}
+
+const { src, alt = "", caption, isFullWidth } = Astro.props;
+
+const imgPath = `/src/assets/images/${src}`;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/images/*.{jpeg,jpg,png,webp,avif}"
+);
+if (!images[imgPath])
+	throw new Error(
+		`"${src}" does not exist in glob: "/src/assets/images/*.{jpeg,jpg,png,webp,avif}"`
+	);
+---
+
+<figure
+	class="post-image grid"
+	data-width={isFullWidth ? "full-bleed" : undefined}
+>
+	<Picture
+		src={images[imgPath]()}
+		alt={alt}
+		formats={["avif", "webp"]}
+		widths={[640, 960, 1280, 1920]}
+		sizes={isFullWidth
+			? "(max-width: 96rem) 100vw, 1328px"
+			: "(max-width: 30rem) 100vw, (max-width: 64rem) 75vw, 800px"}
+	/>
+	{caption && <figcaption>{caption}</figcaption>}
+</figure>

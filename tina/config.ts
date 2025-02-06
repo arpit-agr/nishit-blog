@@ -21,8 +21,8 @@ export default defineConfig({
 	},
 	media: {
 		tina: {
-			publicFolder: "/src/assets",
-			mediaRoot: "images",
+			publicFolder: "/src/assets/images",
+			mediaRoot: "",
 		},
 	},
 	// See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
@@ -73,7 +73,6 @@ export default defineConfig({
 						toolbarOverride: [
 							"heading",
 							"link",
-							"image",
 							"quote",
 							"ul",
 							"ol",
@@ -115,6 +114,42 @@ export default defineConfig({
 										label: "Citation",
 										type: "string",
 										description: "Title of the cited creative work",
+									},
+								],
+							},
+							{
+								name: "PostImage",
+								label: "Image",
+								fields: [
+									{
+										name: "src",
+										label: "Image",
+										description:
+											"Allowed file formats: jpeg, jpg, png, webp, avif",
+										type: "image",
+										ui: {
+											parse(value) {
+												//remove leading slash if it exists
+												return value.startsWith("/") ? value.slice(1) : value;
+											},
+										},
+									},
+									{
+										name: "alt",
+										label: "Alt Text",
+										description:
+											"Alternate text that will be displayed if the image fails to load. ",
+										type: "string",
+									},
+									{
+										name: "caption",
+										label: "Caption",
+										type: "string",
+									},
+									{
+										name: "isFullWidth",
+										label: "Full width",
+										type: "boolean",
 									},
 								],
 							},

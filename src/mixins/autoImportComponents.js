@@ -1,8 +1,10 @@
+// update rss.xml.js if you make any change here
+
 import Quote from "@components/Quote.astro";
-import BlogPostImage from "@components/BlogPostImage.astro";
+import PostImage from "@components/PostImage.astro";
 
 export const components = {
-	img: BlogPostImage,
 	blockquote: Quote,
 	Quote,
+	PostImage,
 };
