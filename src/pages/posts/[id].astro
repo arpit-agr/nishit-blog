@@ -2,18 +2,11 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Header from "@components/Header.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import Blockquote from "@components/Blockquote.astro";
-import BlogPostImage from "@components/BlogPostImage.astro";
 import Footer from "@components/Footer.astro";
 import { getCollection, render } from "astro:content";
+import { components } from "@mixins/autoImportComponents";
 
-const components = {
-	blockquote: Blockquote,
-	img: BlogPostImage,
-	Blockquote,
-};
-
-// 1. Generate a new path for every collection entry
+// Generate a new path for every collection entry
 export async function getStaticPaths() {
 	const publishedPosts = await getCollection("posts", ({ data }) => {
 		return data.isDraft !== true;
@@ -24,7 +17,6 @@ export async function getStaticPaths() {
 	}));
 }
 
-// 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
 const postDate = new Date(post.data.pubDate);
 const { Content } = await render(post);

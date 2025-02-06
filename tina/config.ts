@@ -83,7 +83,7 @@ export default defineConfig({
 						],
 						templates: [
 							{
-								name: "Blockquote",
+								name: "Quote",
 								label: "Quote (with attribution)",
 								fields: [
 									{

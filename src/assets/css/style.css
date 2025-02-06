@@ -17,7 +17,7 @@
 
 @import "blocks/header.css" layer(blocks);
 @import "blocks/footer.css" layer(blocks);
-@import "blocks/blockquote.css" layer(blocks);
+@import "blocks/quote.css" layer(blocks);
 
 @import "utilities/region.css" layer(utilities);
 @import "utilities/visually-hidden.css" layer(utilities);

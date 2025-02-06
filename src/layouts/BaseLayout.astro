@@ -15,7 +15,7 @@ const { class: className, title = "Nishit Jalan", desc } = Astro.props;
 // TODO: check the canonical URL for markdown layouts
 // https://docs.astro.build/en/basics/layouts/#markdown-layouts
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL("/images/opengraph.png", Astro.url);
+const socialImageURL = new URL("/images/opengraph.png", Astro.url.origin);
 ---
 
 <!doctype html>
@@ -72,6 +72,12 @@ const socialImageURL = new URL("/images/opengraph.png", Astro.url);
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
 		<link rel="canonical" href={canonicalURL} />
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Nishit's Blog"
+			href={new URL("rss.xml", Astro.url.origin)}
+		/>
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<!-- TODO: update theme color -->

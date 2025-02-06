@@ -7,6 +7,7 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 export default defineConfig({
 	//TODO: update the final, deployed URL
 	site: "https://nishitjalan.netlify.app",
+	base: "/",
 	integrations: [mdx()],
 	markdown: {
 		rehypePlugins: [rehypeUnwrapImages],
