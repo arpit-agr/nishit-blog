@@ -11,7 +11,7 @@ interface Props {
 
 const { src, alt = "", caption, isFullWidth } = Astro.props;
 
-const imgPath = `/src/assets/images/${src}`;
+const imgPath = `/src/assets/images${src}`;
 const images = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/assets/images/*.{jpeg,jpg,png,webp,avif}"
 );
