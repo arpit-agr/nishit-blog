@@ -4,20 +4,12 @@ import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
 import { loadRenderers } from "astro:container";
 import { getCollection, render } from "astro:content";
+import { components } from "@mixins/autoImportComponents";
 import rss from "@astrojs/rss";
 
 export async function GET(context) {
 	const renderers = await loadRenderers([getMDXRenderer()]);
 	const container = await AstroContainer.create({ renderers });
-
-	const Quote = (await import("@components/Quote.astro")).default;
-	const PostImage = (await import("@components/PostImage.astro")).default;
-
-	const components = {
-		blockquote: Quote,
-		Quote,
-		PostImage,
-	};
 
 	const publishedPosts = await getCollection("posts", ({ data }) => {
 		return data.isDraft !== true;
