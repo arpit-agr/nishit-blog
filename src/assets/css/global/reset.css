@@ -18,8 +18,6 @@
 
 /* Set core html defaults */
 :where(html) {
-	block-size: 100%;
-
 	@media (--motionOK) {
 		scroll-behavior: smooth;
 	}

@@ -28,7 +28,7 @@ const { Content } = await render(post);
 		<article class="post-content grid flow">
 			<h1 class="post-title">{post.data.title}</h1>
 			<p class="post-pub-date">
-				<span aria-hidden="true">//</span>
+				Published
 				<FormattedDate pubDate={postDate} />
 			</p>
 			<Content components={components} />

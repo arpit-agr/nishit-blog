@@ -5,7 +5,7 @@
 	nav {
 		--cluster-gap: var(--space-s);
 
-		border-block-end: var(--section-border-width) solid var(--color-underline);
+		border-block-end: var(--border);
 		font-size: var(--step--1);
 
 		a {
@@ -19,7 +19,7 @@
 				position: absolute;
 				inset-inline: auto 0;
 				inset-block-end: calc(
-					-1 / 2 * (var(--text-decoration-size) + var(--section-border-width))
+					-1 / 2 * (var(--text-decoration-size) + var(--border-thickness))
 				);
 				inline-size: 0%;
 				block-size: var(--text-decoration-size);
@@ -35,7 +35,7 @@
 			&:hover:after {
 				inline-size: 100%;
 				inset-inline: 0 auto;
-				background-color: var(--color-underline-hover);
+				background-color: var(--color-border-hover);
 			}
 		}
 

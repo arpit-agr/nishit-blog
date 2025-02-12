@@ -2,14 +2,18 @@
 	navigation: auto;
 }
 
+html {
+	container-type: inline-size;
+	background-color: var(--color-bg);
+	color-scheme: dark;
+}
+
 body {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 
-	background-color: var(--color-bg);
-	background-image: var(--topography-pattern);
 	color: var(--color-text);
 
 	font-family: var(--font-base);
@@ -63,21 +67,33 @@ p {
 
 a {
 	color: inherit;
-	text-decoration-color: var(--color-underline);
+	text-decoration-color: var(--color-border);
 	text-decoration-style: solid;
-	text-decoration-thickness: var(--space-5xs);
-	text-underline-offset: var(--space-3xs);
+	text-decoration-thickness: var(--border-thickness);
+	text-underline-offset: var(--space-4xs-3xs);
 	transition: color var(--transition-base),
-		text-decoration-color var(--transition-base),
-		text-decoration-thickness var(--transition-base);
+		text-decoration-color var(--transition-base);
 
 	&:hover {
 		color: var(--color-accent);
-		text-decoration-color: var(--color-underline-hover);
-		text-decoration-thickness: var(--space-4xs);
+		text-decoration-color: var(--color-border-hover);
 	}
+}
+
+textarea {
+	field-sizing: content;
+}
+
+li::marker {
+	color: var(--color-accent);
 }
 
 em {
 	font-style: normal;
+}
+
+::selection {
+	background-color: var(--color-accent);
+	color: var(--color-bg);
+	-webkit-font-smoothing: auto;
 }

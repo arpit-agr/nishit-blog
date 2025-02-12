@@ -17,25 +17,21 @@
 	@media (--md-n-above) {
 		grid-template-columns: repeat(5, 1fr);
 
-		> :not(.post-title, .post-pub-date, .post-image[data-width="full-bleed"]) {
+		> :not(.post-title, .post-pub-date, [data-width="full-bleed"]) {
 			grid-column: 1/-2;
 		}
 
-		> :where(
-				.post-title,
-				.post-pub-date,
-				.post-image[data-width="full-bleed"]
-			) {
+		> :where(.post-title, .post-pub-date, [data-width="full-bleed"]) {
 			grid-column: 1/-1;
 		}
 
-		> .post-image[data-width="full-bleed"] > * {
+		> [data-width="full-bleed"] > * {
 			grid-column: 1/-1;
 		}
 	}
 
 	@media (--xl-n-above) {
-		> :not(.post-image[data-width="full-bleed"]) {
+		> :not([data-width="full-bleed"]) {
 			grid-column: 2/-2;
 		}
 
@@ -43,7 +39,7 @@
 			grid-column: 2/-1;
 		}
 
-		> .post-image[data-width="full-bleed"] figcaption {
+		> [data-width="full-bleed"] figcaption {
 			grid-column: 2/-1;
 		}
 	}
@@ -53,6 +49,7 @@
 	--flow-space: 0;
 	order: -1;
 	font-size: var(--step--1);
+	letter-spacing: 0.025em;
 	font-variant-caps: all-small-caps;
 	font-variant-numeric: tabular-nums;
 
@@ -83,13 +80,12 @@
 	}
 
 	figcaption {
-		max-inline-size: var(--measure);
 		font-size: var(--step--2);
 		text-wrap: pretty;
 	}
 }
 
-.post-image[data-width="full-bleed"] {
+[data-width="full-bleed"] {
 	grid-template-columns: subgrid;
 
 	img {
@@ -115,8 +111,20 @@
 					--inset-distance: var(--dynamic-page-gutter);
 				}
 
-				@media (--md-n-above) and (--xxl-n-below) {
+				@media (--md-n-above) and (--below-xl) {
+					--inset-left-distance: var(--dynamic-page-gutter);
 					--inset-distance: calc(
+						var(--dynamic-page-gutter) +
+							((100vw - (2 * var(--dynamic-page-gutter))) / 5)
+					);
+				}
+
+				@media (--xl-n-above) and (--xxl-n-below) {
+					--inset-left-distance: calc(
+						var(--dynamic-page-gutter) +
+							((100vw - (2 * var(--dynamic-page-gutter))) / 5)
+					);
+					--inset-right-distance: calc(
 						var(--dynamic-page-gutter) +
 							((100vw - (2 * var(--dynamic-page-gutter))) / 5)
 					);
@@ -134,7 +142,10 @@
 
 @keyframes reveal {
 	from {
-		clip-path: inset(0% var(--inset-distance) 0% var(--inset-distance));
+		clip-path: inset(
+			0% var(--inset-right-distance, var(--inset-distance)) 0%
+				var(--inset-left-distance, var(--inset-distance))
+		);
 	}
 	to {
 		clip-path: inset(0% 0% 0% 0%);
