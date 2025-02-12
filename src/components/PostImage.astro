@@ -4,12 +4,21 @@ import type { ImageMetadata } from "astro";
 
 interface Props {
 	src: string;
+	photographerName?: string;
+	photographerLink?: string;
 	alt: string;
 	caption?: string;
-	isFullWidth: boolean | undefined;
+	isFullWidth?: boolean;
 }
 
-const { src, alt = "", caption, isFullWidth } = Astro.props;
+const {
+	src,
+	photographerName,
+	photographerLink,
+	alt = "",
+	caption,
+	isFullWidth,
+} = Astro.props;
 
 const imgPath = `/src/assets/images${src}`;
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -34,5 +43,22 @@ if (!images[imgPath])
 			? "(max-width: 96rem) 100vw, 1328px"
 			: "(max-width: 30rem) 100vw, (max-width: 64rem) 75vw, 800px"}
 	/>
-	{caption && <figcaption>{caption}</figcaption>}
+	{
+		// prettier-ignore
+		caption && (
+			<figcaption>
+				{caption}
+				{!!photographerName && (
+					<>
+						(Photo by
+						{!!photographerLink ? (
+							<a href={photographerLink}>{photographerName}</a>
+						) : (
+							photographerName
+						)})
+					</>
+				)}
+			</figcaption>
+		)
+	}
 </figure>

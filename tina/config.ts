@@ -129,6 +129,16 @@ export default defineConfig({
 										type: "image",
 									},
 									{
+										name: "photographerName",
+										label: "Photographer Name",
+										type: "string",
+									},
+									{
+										name: "photographerLink",
+										label: "Photographer Link",
+										type: "string",
+									},
+									{
 										name: "alt",
 										label: "Alt Text",
 										description:
