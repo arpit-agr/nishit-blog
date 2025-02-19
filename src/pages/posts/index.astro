@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Header from "@components/Header.astro";
+import PostList from "@components/PostList.astro";
+import Footer from "@components/Footer.astro";
+
+const publishedPosts = await getCollection("posts", ({ data }) => {
+	return data.isDraft !== true;
+});
+const sortedPostEntries = publishedPosts.sort(
+	(a, b) =>
+		new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+---
+
+<!-- TODO: update page desc -->
+<BaseLayout class="post-archive-page wrapper" title="Posts" desc="TKTK">
+	<Header class="region" />
+	<main class="flow" id="main">
+		<h1>Posts</h1>
+		<PostList entries={sortedPostEntries} />
+	</main>
+	<Footer />
+</BaseLayout>

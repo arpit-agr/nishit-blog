@@ -1,5 +1,11 @@
 .site-footer {
 	--region-end-space: var(--space-s);
+	font-size: var(--step--2);
+
+	.site-footer-inner {
+		padding-block-start: var(--space-2xs); /* magic number */
+		border-block-start: var(--border);
+	}
 
 	p {
 		margin-inline-start: auto;
@@ -7,13 +13,6 @@
 	}
 
 	a {
-		display: inline-block;
-		padding-block: 0.5ex;
-	}
-
-	.site-footer-inner {
-		padding-block: 1ex;
-		border-block-start: var(--border);
-		font-size: var(--step--2);
+		padding-block: var(--space-2xs);
 	}
 }

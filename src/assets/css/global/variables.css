@@ -14,7 +14,7 @@
 	--color-text: #f0fff1;
 	--color-accent: #00dd8a;
 
-	--color-border: color-mix(in oklch, currentColor, var(--color-bg) 37.5%);
+	--color-border: color-mix(in oklch, currentColor, var(--color-bg) 50%);
 	--color-border-hover: color-mix(
 		in oklch,
 		currentColor,

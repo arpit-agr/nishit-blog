@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "@components/FormattedDate.astro";
+
+interface Props {
+	entries: CollectionEntry<"posts">[];
+}
+
+const { entries } = Astro.props;
+---
+
+<ol class="post-list grid" role="list">
+	{
+		entries.map((entry) => {
+			const entryDate = new Date(entry.data.pubDate);
+			return (
+				<li class="flow">
+					<a href={`/posts/${entry.id}`}>{entry.data.title}</a>
+					<FormattedDate pubDate={entryDate} />
+				</li>
+			);
+		})
+	}
+</ol>

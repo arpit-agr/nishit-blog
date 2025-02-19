@@ -17,10 +17,14 @@
 
 @import "blocks/header.css" layer(blocks);
 @import "blocks/footer.css" layer(blocks);
+@import "blocks/post-list.css" layer(blocks);
 @import "blocks/quote.css" layer(blocks);
+@import "blocks/contact-form.css" layer(blocks);
 
 @import "utilities/region.css" layer(utilities);
 @import "utilities/visually-hidden.css" layer(utilities);
 
 @import "exceptions/home-page.css" layer(exceptions);
+@import "exceptions/post-archive-page.css" layer(exceptions);
 @import "exceptions/post-page.css" layer(exceptions);
+@import "exceptions/contact-page.css" layer(exceptions);

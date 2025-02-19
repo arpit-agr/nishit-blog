@@ -1,6 +1,8 @@
 .post-blockquote {
 	--grid-row-gap: var(--space-xs);
 	--grid-column-gap: var(--space-xs);
+
+	position: relative;
 	grid-template-columns: auto 1fr;
 
 	&:has(figcaption) {
@@ -13,7 +15,7 @@
 
 	&:before {
 		content: "";
-		inline-size: var(--space-2xs);
+		inline-size: var(--space-xs-s);
 		/* -1 is the last line of the explicit grid. And if you haven't defined any explicit rows, then all your rows are implicit. And -1 is the same line as 1. Considering this, we define explicit rows above if figure has figcaption. */
 		grid-row: 1/-1;
 
@@ -21,12 +23,43 @@
 		background-image: var(--dots-pattern);
 		mask-image: url(/images/grunge-texture-comp-13.png);
 		mask-size: 50% 50%;
+		mix-blend-mode: color-dodge;
 	}
 
 	blockquote {
 		--flow-space: 1ex;
 		font-size: var(--step-1);
 		line-height: var(--leading-snug);
+
+		&:before,
+		&:after {
+			position: absolute;
+		}
+
+		&:before {
+			content: open-quote;
+			inset-block-start: 0;
+			inset-inline-start: 0;
+
+			box-sizing: content-box;
+			inline-size: var(--space-xs-s);
+			block-size: 1ex;
+			padding-block: var(--space-5xs-4xs);
+
+			background: var(--color-bg);
+			color: var(--color-accent);
+
+			font-family: var(--font-display);
+			font-size: var(--step-5);
+			line-height: 1;
+		}
+
+		&:after {
+			content: close-quote;
+			inset-block-end: 0;
+			inset-inline-end: 0;
+			opacity: 0;
+		}
 	}
 
 	figcaption {

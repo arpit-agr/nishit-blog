@@ -1,4 +1,7 @@
 ---
+import NavLink from "./NavLink.astro";
+import { Icon } from "astro-icon/components";
+
 interface Props {
 	class?: string;
 }
@@ -7,10 +10,22 @@ const { class: className } = Astro.props;
 ---
 
 <header class:list={["site-header", className]}>
-	<nav class="cluster">
-		<a href="/">Nishit Jalan</a>
-		<a href="/#latest-posts">Blog</a>
-		<a href="#">Contact</a>
-	</nav>
+	<div class="site-header-inner repel">
+		<nav>
+			<ul class="cluster" role="list">
+				<li><NavLink href="/" label="Nishit Jalan" /></li>
+				<li><NavLink href="/posts" label="Posts" /></li>
+				<li><NavLink href="/contact" label="Contact" /></li>
+			</ul>
+		</nav>
+		<div class="socials cluster">
+			<a href="#" aria-label="LinkedIn">
+				<Icon name="fa6-brands:linkedin" size="1em" />
+			</a>
+			<a href="#" aria-label="Instagram">
+				<Icon name="fa6-brands:instagram" size="1em" />
+			</a>
+		</div>
+	</div>
 	<slot />
 </header>

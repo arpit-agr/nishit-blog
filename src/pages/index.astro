@@ -3,8 +3,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 import Header from "@components/Header.astro";
-import headshotImg from "@assets/images/headshot.jpg";
-import FormattedDate from "@components/FormattedDate.astro";
+import headshotImg from "@assets/images/headshot-edited.png";
+import PostList from "@components/PostList.astro";
 import Footer from "@components/Footer.astro";
 
 const publishedPosts = await getCollection("posts", ({ data }) => {
@@ -14,6 +14,7 @@ const sortedPostEntries = publishedPosts.sort(
 	(a, b) =>
 		new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
+const latestPostEntries = sortedPostEntries.slice(0, 4);
 ---
 
 <!-- TODO: update page desc -->
@@ -40,24 +41,12 @@ const sortedPostEntries = publishedPosts.sort(
 			/>
 		</div>
 	</Header>
-	<main class="flow grid" id="main">
+	<main class="grid" id="main">
 		<section id="latest-posts" class="grid">
 			<h2 class="cluster">
 				<span>Latest posts</span>
 			</h2>
-			<ol class="grid" role="list">
-				{
-					sortedPostEntries.map((entry) => {
-						const entryDate = new Date(entry.data.pubDate);
-						return (
-							<li class="flow">
-								<a href={`/posts/${entry.id}`}>{entry.data.title}</a>
-								<FormattedDate pubDate={entryDate} />
-							</li>
-						);
-					})
-				}
-			</ol>
+			<PostList entries={latestPostEntries} />
 		</section>
 	</main>
 	<Footer />

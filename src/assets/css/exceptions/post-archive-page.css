@@ -1,0 +1,5 @@
+.post-archive-page {
+	.post-list {
+		--flow-space: var(--space-m-l);
+	}
+}

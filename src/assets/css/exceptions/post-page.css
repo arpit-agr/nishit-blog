@@ -7,10 +7,18 @@
 		grid-column: 1/-1;
 	}
 
-	h2,
-	h3,
-	:where(.post-blockquote, .post-image),
-	:where(.post-pub-date, .post-blockquote, .post-image) + * {
+	ul,
+	ol {
+		padding-inline-start: 1em;
+		list-style: square;
+
+		> li + li {
+			margin-block-start: 0.5ex;
+		}
+	}
+
+	:where(h2, h3, .post-blockquote, .post-image),
+	:where(h2, h3, .post-pub-date, .post-blockquote, .post-image) + * {
 		--flow-space: var(--space-m-l);
 	}
 

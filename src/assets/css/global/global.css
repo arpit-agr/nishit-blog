@@ -67,7 +67,7 @@ p {
 
 a {
 	color: inherit;
-	text-decoration-color: var(--color-border);
+	text-decoration-color: currentColor;
 	text-decoration-style: solid;
 	text-decoration-thickness: var(--border-thickness);
 	text-underline-offset: var(--space-4xs-3xs);
@@ -95,5 +95,5 @@ em {
 ::selection {
 	background-color: var(--color-accent);
 	color: var(--color-bg);
-	-webkit-font-smoothing: auto;
+	text-shadow: none;
 }

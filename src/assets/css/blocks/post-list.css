@@ -1,0 +1,32 @@
+.post-list {
+	--grid-row-gap: var(--space-m);
+	grid-template-columns: repeat(5, 1fr);
+
+	> li {
+		grid-column: 1/-1;
+	}
+
+	a {
+		display: block;
+		text-wrap: pretty;
+		hyphens: initial;
+	}
+
+	time {
+		--flow-space: var(--space-3xs);
+		display: block;
+		font-size: var(--step--1);
+	}
+}
+
+@media (--md-n-above) {
+	.post-list {
+		> li {
+			grid-column: span 2;
+		}
+
+		> li:nth-child(even) {
+			grid-column: -3/-1;
+		}
+	}
+}

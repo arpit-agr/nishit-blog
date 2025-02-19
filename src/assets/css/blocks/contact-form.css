@@ -1,0 +1,66 @@
+form[name="contact"] {
+	div {
+		--flow-space: var(--space-2xs);
+
+		> * {
+			display: block;
+			inline-size: 100%;
+		}
+	}
+
+	input,
+	textarea,
+	button {
+		padding: 0.25lh 1ch;
+		border: none;
+		border-radius: unset;
+		outline: var(--border);
+		transition: outline-color var(--transition-base);
+
+		&:hover,
+		&:focus-visible {
+			outline-color: var(--color-border-hover);
+		}
+	}
+
+	input,
+	textarea {
+		background-color: var(--color-bg);
+
+		&::placeholder {
+			font-size: var(--step--1);
+		}
+	}
+
+	label,
+	button {
+		font-variant-caps: all-small-caps;
+	}
+
+	label {
+		font-size: var(--step--1);
+		letter-spacing: 0.025em;
+	}
+
+	button {
+		background-color: var(--color-text);
+		color: var(--color-bg);
+		-webkit-font-smoothing: auto;
+		transition: background-color var(--transition-base);
+
+		&:hover,
+		&:focus-visible {
+			background-color: var(--color-accent);
+		}
+
+		&:focus-visible {
+			outline-color: var(--color-text);
+			outline-offset: calc(-1 * var(--border-thickness));
+		}
+
+		@supports (text-box-trim: trim-both) {
+			text-box: trim-both cap alphabetic;
+			padding-block: 0.5lh;
+		}
+	}
+}

@@ -1,26 +1,33 @@
 .site-header {
 	--region-start-space: var(--space-s);
-	position: relative;
+}
+
+.site-header-inner {
+	--cluster-gap: var(--space-xs);
+	border-block-end: var(--border);
+
+	a {
+		padding-block: var(--space-2xs);
+	}
 
 	nav {
-		--cluster-gap: var(--space-s);
-
-		border-block-end: var(--border);
 		font-size: var(--step--1);
 
 		a {
 			position: relative;
-			padding-block: var(--space-3xs);
+			display: inline-block;
 			text-decoration-line: none;
 
 			&:after {
-				--text-decoration-size: var(--space-4xs);
+				--text-decoration-size: 0.33ex;
+
 				content: "";
 				position: absolute;
 				inset-inline: auto 0;
 				inset-block-end: calc(
 					-1 / 2 * (var(--text-decoration-size) + var(--border-thickness))
 				);
+				/* inset-block-end: calc(-1 * var(--border-thickness)); */
 				inline-size: 0%;
 				block-size: var(--text-decoration-size);
 				background-color: transparent;
@@ -32,6 +39,8 @@
 				mask-size: 1lh 1lh;
 			}
 
+			&[aria-current="page"]:after,
+			&[data-state="active"]:after,
 			&:hover:after {
 				inline-size: 100%;
 				inset-inline: 0 auto;
@@ -39,8 +48,8 @@
 			}
 		}
 
-		> :nth-last-child(2) {
-			margin-inline-start: auto;
+		> :nth-child(3) {
+			margin-inline-end: auto;
 		}
 	}
 }
