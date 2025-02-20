@@ -34,8 +34,8 @@
 		}
 
 		@container (width > 32rem) {
-			> div:first-child,
-			> div:nth-child(2) {
+			> .name-field,
+			> .email-field {
 				grid-column: span 1;
 			}
 		}

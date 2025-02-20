@@ -1,5 +1,26 @@
-<form class="grid" name="contact" method="POST" data-netlify="true">
-	<div class="flow">
+<!-- https://docs.netlify.com/forms/setup/#html-forms -->
+<form
+	class="grid"
+	name="contact"
+	method="POST"
+	data-netlify="true"
+	netlify-honeypot="bot-field"
+>
+	{
+		import.meta.env.DEV && (
+			<div class="visually-hidden">
+				The build system automatically strips the data-netlify="true" attribute
+				from the form tag and injects a hidden input named form-name.
+			</div>
+		)
+	}
+	<!-- https://docs.netlify.com/forms/spam-filters/ -->
+	<div class="visually-hidden">
+		<label>
+			Don’t fill this out if you’re human: <input name="bot-field" />
+		</label>
+	</div>
+	<div class="name-field flow">
 		<label for="name">Name:</label>
 		<input
 			id="name"
@@ -11,7 +32,7 @@
 			required
 		/>
 	</div>
-	<div class="flow">
+	<div class="email-field flow">
 		<label for="email">Email:</label>
 		<input
 			id="email"
