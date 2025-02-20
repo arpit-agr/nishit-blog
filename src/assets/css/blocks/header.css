@@ -27,16 +27,11 @@
 				inset-block-end: calc(
 					-1 / 2 * (var(--text-decoration-size) + var(--border-thickness))
 				);
-				/* inset-block-end: calc(-1 * var(--border-thickness)); */
 				inline-size: 0%;
 				block-size: var(--text-decoration-size);
 				background-color: transparent;
-				background-image: var(--dots-pattern);
 				transition: inset-inline var(--transition-base),
 					inline-size var(--transition-base);
-
-				mask-image: url(/images/grunge-texture-comp-13.png);
-				mask-size: 1lh 1lh;
 			}
 
 			&[aria-current="page"]:after,

@@ -14,7 +14,7 @@
 	--color-text: #f0fff1;
 	--color-accent: #00dd8a;
 
-	--color-border: color-mix(in oklch, currentColor, var(--color-bg) 50%);
+	--color-border: color-mix(in oklch, currentColor, var(--color-bg) 75%);
 	--color-border-hover: color-mix(
 		in oklch,
 		currentColor,
@@ -51,8 +51,4 @@
 	--transition-movement: 0.2s linear;
 	--transition-fade: 0.3s ease;
 	--transition-bounce: 0.5s cubic-bezier(0.5, 0.05, 0.2, 1.5);
-}
-
-:root {
-	--dots-pattern: url("data:image/svg+xml,%3Csvg width='2' height='2' viewBox='0 0 2 2' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000800' fill-opacity='0.15' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
 }

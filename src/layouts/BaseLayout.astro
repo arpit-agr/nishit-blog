@@ -62,7 +62,12 @@ const socialImageURL = new URL("/images/opengraph.png", Astro.url.origin);
 			type="image/png"
 			crossorigin
 		/>
-		<link rel="preload" href="/images/noise.png" as="image" type="image/png" />
+		<link
+			rel="preload"
+			href="/images/noise-new.webp"
+			as="image"
+			type="image/png"
+		/>
 
 		<meta name="description" content={desc} />
 		<meta property="og:title" content={title} />
@@ -86,9 +91,9 @@ const socialImageURL = new URL("/images/opengraph.png", Astro.url.origin);
 	</head>
 	<body class={className}>
 		<SkipToMain />
+		<Noise />
 		<slot>
 			<p>This is my fallback content, if there is no child passed into slot</p>
 		</slot>
-		<Noise />
 	</body>
 </html>

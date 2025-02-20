@@ -28,7 +28,9 @@ form[name="contact"] {
 
 	input,
 	textarea {
+		position: relative;
 		background-color: var(--color-bg);
+		z-index: 1;
 
 		&::placeholder {
 			font-size: var(--step--1);

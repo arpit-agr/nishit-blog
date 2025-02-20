@@ -4,16 +4,15 @@
 	.noise {
 		position: absolute;
 		inset: 0 calc(-1 * var(--dynamic-page-gutter));
-		background-image: url("/images/noise.png");
+		background-image: url("/images/noise-new.webp");
 		background-repeat: repeat;
-		opacity: 0.033;
+		opacity: 0.2;
 		pointer-events: none;
-		z-index: 999;
 
 		mask-image: linear-gradient(
 			to bottom,
 			transparent,
-			var(--space-s),
+			var(--space-2xs),
 			white calc(var(--space-s) + 1lh)
 		);
 	}
