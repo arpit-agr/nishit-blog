@@ -97,3 +97,7 @@ em {
 	color: var(--color-bg);
 	text-shadow: none;
 }
+
+[tabindex="-1"]:focus-visible {
+	outline: none;
+}

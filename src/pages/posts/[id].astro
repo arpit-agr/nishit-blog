@@ -24,7 +24,7 @@ const { Content } = await render(post);
 
 <BaseLayout class="post-page wrapper" title={post.data.title} desc="TKTK">
 	<Header class="region" />
-	<main id="main">
+	<main id="main" tabindex="-1">
 		<article class="post-content grid flow">
 			<h1 class="post-title">{post.data.title}</h1>
 			<p class="post-pub-date">

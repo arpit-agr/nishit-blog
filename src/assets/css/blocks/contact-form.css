@@ -12,13 +12,16 @@ form[name="contact"] {
 	textarea,
 	button {
 		padding: 0.25lh 1ch;
-		border: none;
+		border: var(--border);
 		border-radius: unset;
 		outline: var(--border);
-		transition: outline-color var(--transition-base);
+		outline-color: transparent;
+		transition: border-color var(--transition-base),
+			outline-color var(--transition-base);
 
 		&:hover,
 		&:focus-visible {
+			border-color: var(--color-border-hover);
 			outline-color: var(--color-border-hover);
 		}
 	}
@@ -51,11 +54,6 @@ form[name="contact"] {
 		&:hover,
 		&:focus-visible {
 			background-color: var(--color-accent);
-		}
-
-		&:focus-visible {
-			outline-color: var(--color-text);
-			outline-offset: calc(-1 * var(--border-thickness));
 		}
 
 		@supports (text-box-trim: trim-both) {
