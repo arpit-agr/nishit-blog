@@ -19,12 +19,8 @@
 		/* -1 is the last line of the explicit grid. And if you haven't defined any explicit rows, then all your rows are implicit. And -1 is the same line as 1. Considering this, we define explicit rows above if figure has figcaption. */
 		grid-row: 1/-1;
 
-		background-color: color-mix(
-			in oklch,
-			var(--color-accent),
-			var(--color-bg) 75%
-		);
-		clip-path: polygon(10% 0%, 90% 0%, 90% 100%, 10% 100%);
+		background-color: var(--color-accent);
+		clip-path: polygon(10% 0%, 85% 0%, 85% 100%, 10% 100%);
 	}
 
 	blockquote {
@@ -65,5 +61,6 @@
 
 	figcaption {
 		font-size: var(--step--1);
+		text-box: trim-end cap alphabetic;
 	}
 }
